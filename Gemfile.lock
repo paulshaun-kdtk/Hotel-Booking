@@ -335,6 +335,7 @@ DEPENDENCIES
   rspec-rails
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
+  rspec-rails
   tzinfo-data
   web-console
 
