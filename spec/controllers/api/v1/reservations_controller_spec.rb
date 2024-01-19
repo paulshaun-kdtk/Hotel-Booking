@@ -39,9 +39,9 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       let(:valid_params) { { reservation: { date: '2024-01-19', city: 'Big City', user_id: user1.id }, format: :json } }
 
       it 'creates a new reservation' do
-        expect {
+        expect do
           post :create, params: valid_params
-        }.to change(Reservation, :count).by(1)
+        end.to change(Reservation, :count).by(1)
       end
 
       it 'returns a created response' do
@@ -54,9 +54,9 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       let(:invalid_params) { { reservation: { date: nil, city: 'Big City', user_id: user1.id }, format: :json } }
 
       it 'does not create a new reservation' do
-        expect {
+        expect do
           post :create, params: invalid_params
-        }.to_not change(Reservation, :count)
+        end.to_not change(Reservation, :count)
       end
 
       it 'returns unprocessable entity status' do
@@ -70,9 +70,9 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
     let!(:reservation) { Reservation.create(date: '2024-01-19', city: 'Big City', user: user1) }
 
     it 'destroys the requested reservation' do
-      expect {
+      expect do
         delete :destroy, params: { id: reservation.id, format: :json }
-      }.to change(Reservation, :count).by(-1)
+      end.to change(Reservation, :count).by(-1)
     end
 
     it 'returns a no content response' do
