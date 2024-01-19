@@ -3,7 +3,7 @@ import React from 'react';
 const Splash = () => (
   <div className="flex justify-center items-center h-screen bg-neutral-50 flex-col">
       <h3 className="font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4">
-        Authentication Template
+        Authentication
       </h3>
       <div className="flex items-center gap-6">
         <a
