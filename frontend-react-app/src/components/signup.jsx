@@ -39,7 +39,7 @@ const SignUpForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        }
+        },
       );
 
       console.log('Response:', response.data);
@@ -53,9 +53,9 @@ const SignUpForm = () => {
       setError('');
     } catch (error) {
       if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message[0]
+        error.response
+        && error.response.data
+        && error.response.data.message[0]
       ) {
         setError(error.response.data.message[0]);
       } else {
@@ -66,7 +66,7 @@ const SignUpForm = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
         <form className="space-y-3" onSubmit={handleSubmit}>
           <div>
             <label

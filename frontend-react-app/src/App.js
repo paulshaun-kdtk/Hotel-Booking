@@ -15,7 +15,7 @@ function App() {
           <Route path="/homepage" element={<Homepage />} />
           <Route
             path="/*"
-            element={
+            element={(
               <>
                 <Splash />
                 <div className="content">
@@ -25,7 +25,7 @@ function App() {
                   </Routes>
                 </div>
               </>
-            }
+            )}
           />
         </Routes>
       </div>
