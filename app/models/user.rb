@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :hotels
   has_many :reservations
 
-  devise :database_authenticatable, :registerable, :validatable,
-      :jwt_authenticatable, jwt_revocation_strategy: self,
-      :recoverable, :rememberable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable,
+         :rememberable, :confirmable, :trackable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
 end
