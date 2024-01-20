@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginSuccess, loginFailure } from '../components/redux/slices/authSlice';
+import { loginSuccess, loginFailure } from './redux/slices/authSlice';
 
 const SignIn = () => {
   const navigate = useNavigate();

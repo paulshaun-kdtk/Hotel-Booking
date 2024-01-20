@@ -31,8 +31,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_101448) do
     t.date "date"
     t.string "city"
     t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_reservations_on_item_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -51,5 +53,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_101448) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reservations", "items"
   add_foreign_key "reservations", "users"
 end

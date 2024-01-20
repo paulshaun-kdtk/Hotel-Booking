@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../components/redux/slices/authSlice';
+import { logout } from './redux/slices/authSlice';
 
 const Logout = () => {
   const dispatch = useDispatch();
