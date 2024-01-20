@@ -22,6 +22,7 @@ gem 'jsonapi-serializer'
 gem 'rack-cors'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
+gem 'bigdecimal'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -40,11 +41,27 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'capybara'
   gem 'debug', platforms: %i[mri windows]
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'web-console'
 end
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'selenium-webdriver'
+end
+
+gem 'rubocop', '>= 1.0', '< 2.0'
+
+gem 'carrierwave'
+
+gem 'cancancan'
