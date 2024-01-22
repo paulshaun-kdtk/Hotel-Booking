@@ -103,11 +103,6 @@ GEM
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
     concurrent-ruby (1.2.2)
-    bigdecimal (3.1.6)
-    bootsnap (1.17.0)
-      msgpack (~> 1.2)
-    builder (3.2.4)
-    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
@@ -324,7 +319,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
-  bigdecimal
+  bigdecimal (= 3.1.4)
   bootsnap
   cancancan
   capybara
@@ -341,7 +336,6 @@ DEPENDENCIES
   rspec-rails
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
-  rspec-rails
   tzinfo-data
   web-console
 
