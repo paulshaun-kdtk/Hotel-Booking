@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-
 const Navbar = () => {
   const location = useLocation();
   const isActive = (pathname) => location.pathname === pathname;
@@ -11,14 +10,13 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div
-        role="button"
+      <button
         className={`menu-icon ${isNavbarOpen ? 'active' : ''}`}
         onClick={toggleNavbar}
 
       >
         ☰
-      </div>
+      </button>
       <div className={`navbar-container ${isNavbarOpen ? 'open' : ''}`}>
         <ul className="nav-list-container">
           <li className={isActive('/homepage') ? 'active' : ''}><Link to="/homepage">HomePage</Link></li>

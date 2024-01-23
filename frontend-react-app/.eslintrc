@@ -1,9 +1,3 @@
-Shaun Paul  to  Everyone 6:44 PM
-.eslint.rc
-.babelrc
-.eslintrc
-
-Shaun Paul  to  Everyone 6:47 PM
 {
   "env": {
     "browser": true,
@@ -19,14 +13,17 @@ Shaun Paul  to  Everyone 6:47 PM
     "sourceType": "module"
   },
   "extends": ["airbnb", "plugin:react/recommended", "plugin:react-hooks/recommended"],
-  "plugins": ["react"],
+  "plugins": ["react", "jsx-a11y"],
   "rules": {
+    "jsx-a11y/rule-name": 2,
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "no-shadow": "off",
     "react/prop-types": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "jsx-a11y/interactive-supports-focus": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   },
   "overrides": [
     {
