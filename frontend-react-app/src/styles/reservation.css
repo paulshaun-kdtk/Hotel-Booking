@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.reservation-page {
+  background-color: rgba(97, 167, 0, 0.625);
+  margin: 12px;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.item-name {
+  font-size: 30px;
+  letter-spacing: 6px;
+  font-weight: 700;
+  color: white;
+}
+
+.item-description {
+  color: white;
+  line-height: 16px;
+  padding-top: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hamburger-icon {
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.search-icon {
+  background-color: white;
+  padding: 7px 18px;
+  border-radius: 14px;
+  color: rgba(109, 187, 0, 0.625);
+}
+
+.main {
+  padding-top: 18%;
+}
+
+.main li {
+  list-style: none;
+  text-align: center;
+}
+
+.clickable {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.choose-city,
+.date-picker {
+  background-color: rgba(109, 187, 0);
+  border: 1px solid rgb(232, 255, 198);
+  color: rgb(232, 255, 198);
+  border-radius: 22px;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.select-city,
+.date-input {
+  background-color: rgba(109, 187, 0);
+  color: rgb(232, 255, 198);
+}
+
+.button {
+  background-color: white;
+  color: rgba(109, 187, 0, 0.625);
+  border-radius: 22px;
+  padding: 12px 26px;
+  cursor: pointer;
+}
+
+.sidebar,
+.search-results {
+  position: fixed;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  color: rgba(109, 187, 0);
+}
+
+.search-results {
+  margin-left: 82%;
+  color: grey;
+  font-style: italic;
+}
+
+.item-name-search,
+.item-description-search {
+  color: rgba(109, 187, 0);
+  font-size: 15px;
+}
+
+.close-btn {
+  color: gray;
+  font-size: 14px;
+  font-style: italic;
+  align-self: flex-start;
+}
