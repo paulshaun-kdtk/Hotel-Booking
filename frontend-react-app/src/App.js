@@ -4,6 +4,7 @@ import SignInForm from './components/signin';
 import SignUpForm from './components/signup';
 import Homepage from './components/Hompage';
 import Splash from './components/splash';
+import ReservationPage from './components/ReservationPage';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
           <Route path="/login" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/homepage" element={<Homepage />} />
+          <Route path="/reservation" element={<ReservationPage />} />
           <Route
             path="/*"
-            element={(
+            element={
               <>
                 <Splash />
                 <div className="content">
@@ -25,7 +27,7 @@ function App() {
                   </Routes>
                 </div>
               </>
-            )}
+            }
           />
         </Routes>
       </div>
