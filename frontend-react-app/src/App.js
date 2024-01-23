@@ -15,20 +15,7 @@ function App() {
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/reservation" element={<ReservationPage />} />
-          <Route
-            path="/*"
-            element={(
-              <>
-                <Splash />
-                <div className="content">
-                  <Routes>
-                    <Route index element={<Homepage />} />
-                    {/* Add other routes as needed */}
-                  </Routes>
-                </div>
-              </>
-            )}
-          />
+          <Route path="/*" element={<Splash />} />
         </Routes>
       </div>
     </Router>
