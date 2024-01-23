@@ -43,7 +43,7 @@
 
 
 .nav-list-container li.active {
-  background-color: rgb(180, 238, 63);;
+  background-color: rgb(180, 238, 63);
 }
 
 .icons-container{
@@ -87,7 +87,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 3em;
+  top: 2em;
   left: 2em;
   font-size: 40px;
   font-weight: bolder;
@@ -100,8 +100,40 @@
   align-items: center;
   position: relative;
   color: grey;
-  top: 6.5em;
+  top: 4.5em;
   left: 4.5em;
   font-size: 17px;
   width: 100%;
+}
+
+.forward-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  background-color: rgb(180, 238, 63);
+  height: 40px;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  cursor: pointer;
+}
+
+.forward-button-container i:hover{
+  font-size: 20px;
+}
+
+.back-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  background-color: rgb(180, 238, 63);
+  height: 40px;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  cursor: pointer;
+}
+
+.back-button-container i:hover{
+  font-size: 20px;
 }
