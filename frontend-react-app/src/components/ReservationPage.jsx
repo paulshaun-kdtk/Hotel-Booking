@@ -6,7 +6,7 @@ import {
   setSelectedDate,
   setSelectedCity,
 } from './redux/slices/reservationSlice';
-import '../styles/ReservationPage.css';
+import '../styles/reservation.css';
 
 const ReservationPage = ({
   username,
@@ -32,7 +32,7 @@ const ReservationPage = ({
 
         if (response.status !== 200) {
           throw new Error(
-            `Server returned ${response.status} - ${response.statusText}`
+            `Server returned ${response.status} - ${response.statusText}`,
           );
         }
 
@@ -63,9 +63,7 @@ const ReservationPage = ({
 
   const performSearch = () => {
     const lowerCaseTerm = searchTerm.toLowerCase();
-    const results = itemData.filter((item) =>
-      item.name.toLowerCase().includes(lowerCaseTerm)
-    );
+    const results = itemData.filter((item) => item.name.toLowerCase().includes(lowerCaseTerm));
     setSearchResults(results);
   };
 
