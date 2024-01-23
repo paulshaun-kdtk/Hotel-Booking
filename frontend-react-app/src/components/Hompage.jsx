@@ -1,12 +1,20 @@
-import React from 'react';
-import Logout from './logout';
+import React, { useState } from 'react';
+import Navbar from './Navbar';
 
-const Homepage = () => (
-  <div className="flex flex-col items-center justify-center">
-    <h1 className="p-5">Welcome to Authentication Template!</h1>
-    <h2 className="p-5">Happy Coding!&#128512;</h2>
-    <Logout />
-  </div>
-);
+
+const Homepage = () => {
+
+  return (
+    <>
+     <Navbar />
+     <div className="homepage-container">
+        <h1>Latest Hotels</h1>
+        <p>Please select a hotel</p>
+     </div>
+    </>
+  )
+    
+  
+};
 
 export default Homepage;

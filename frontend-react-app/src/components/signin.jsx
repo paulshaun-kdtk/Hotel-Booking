@@ -33,8 +33,9 @@ const SignIn = () => {
 
       if (response.ok) {
         const user = await response.json();
+        console.log("user: ", user)
         dispatch(loginSuccess({ user }));
-        navigate('/Homepage');
+        navigate('/homepage');
       } else {
         dispatch(loginFailure());
         setError('Login failed');

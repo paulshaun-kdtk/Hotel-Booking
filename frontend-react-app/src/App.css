@@ -1,39 +1,107 @@
-.App {
-  text-align: center;
+.navbar-container {
+  width: 280px;
+  height: 100vh;
+  background-color: rgb(247, 238, 238);
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: left 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: rgb(22, 16, 16);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-container.open {
+  left: 0; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-list-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  padding-right: 0px;
+  position: relative;
+  top: 10em;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-list-container li{
+  padding: 10px;
+  font-size: medium;
+  font-weight: bolder;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
+.nav-list-container li.active {
+  background-color: rgb(180, 238, 63);;
+}
+
+.icons-container{
+  display: flex;
+  justify-content: right;
+  padding: 20px;
+  position: relative;
+  top: 37vh;
+}
+
+.icons-container li{
+  padding: 10px;
+  color: grey;
+}
+
+.footer-container{
+  display: flex;
+  justify-content: right;
+  padding: 20px;
+  position: relative;
+  top: 28vh;
+}
+
+.footer-container li{
+  font-size: 12px;
+  padding: 10px;
+  color: grey;
+}
+
+.homepage-container{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid brown;
+  height: 80vh;
+}
+
+.homepage-container h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 3em;
+  left: 2em;
+  font-size: 40px;
+  font-weight: bolder;
+  width: 100%;
+}
+
+.homepage-container p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: grey;
+  top: 6.5em;
+  left: 4.5em;
+  font-size: 17px;
+  width: 100%;
 }

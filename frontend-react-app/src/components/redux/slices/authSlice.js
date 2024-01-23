@@ -12,6 +12,7 @@ const authSlice = createSlice({
   reducers: {
     loginSuccess: (state, action) => {
       const { user, token } = action.payload;
+      console.log('Received token:', token);
       sessionStorage.setItem('token', token); // Store token in sessionStorage
       toast.success(`Successful login. Welcome, ${user.name}`);
       return {
