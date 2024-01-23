@@ -1,4 +1,3 @@
-# spec/controllers/api/v1/users_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do

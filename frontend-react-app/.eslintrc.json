@@ -9,9 +9,6 @@
     "babelOptions": {
       "configFile": "./frontend-react-app/.babelrc"
     },
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
