@@ -7,17 +7,15 @@ const fetchItemDetailsSuccess = (item) => ({
   payload: item,
 });
 
-const fetchItemDetails = (itemId) => {
-  return (dispatch) => {
-    axios
-      .get(`/api/v1/items/${itemId}`)
-      .then((response) => {
-        dispatch(fetchItemDetailsSuccess(response.data));
-      })
-      .catch((error) => {
-        console.error('Error during item details fetching:', error);
-      });
-  };
+const fetchItemDetails = (itemId) => (dispatch) => {
+  axios
+    .get(`/api/v1/items/${itemId}`)
+    .then((response) => {
+      dispatch(fetchItemDetailsSuccess(response.data));
+    })
+    .catch((error) => {
+      console.error('Error during item details fetching:', error);
+    });
 };
 
 export default fetchItemDetails;

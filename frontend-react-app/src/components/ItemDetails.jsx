@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { fetchItemDetails } from './redux/actions/itemActions';
-import { Sidebar } from './Sidebar'; // will be updated after sidebar is created
+// import { fetchItemDetails } from './redux/actions/itemActions';
+import fetchItemDetails from './redux/actions/itemActions';
+// import { Sidebar } from './Sidebar'; // will be updated after sidebar is created
 
 const ItemDetails = () => {
   const { itemId } = useParams();
@@ -20,7 +21,7 @@ const ItemDetails = () => {
 
   return (
     <div>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <h2>Item Details</h2>
       {item && (
         <div>
@@ -47,7 +48,10 @@ const ItemDetails = () => {
               Duration:
               {item.duration}
             </p>
-            <p>{item.apr}% APR Representative</p>
+            <p>
+              {item.apr}
+              % APR Representative
+            </p>
           </div>
           <button onClick={handleReserveClick}>Reserve</button>
         </div>
