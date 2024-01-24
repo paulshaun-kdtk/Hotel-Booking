@@ -7,17 +7,15 @@ const fetchReservationsSuccess = (reservations) => ({
   payload: reservations,
 });
 
-const fetchReservations = () => {
-  return (dispatch) => {
-    axios
-      .get('http://127.0.0.1:4000/api/v1/reservations')
-      .then((response) => {
-        dispatch(fetchReservationsSuccess(response.data));
-      })
-      .catch((error) => {
-        console.error('Error during reservation:', error);
-      });
-  };
+const fetchReservations = () => (dispatch) => {
+  axios
+    .get('http://127.0.0.1:4000/api/v1/reservations')
+    .then((response) => {
+      dispatch(fetchReservationsSuccess(response.data));
+    })
+    .catch((error) => {
+      console.error('Error during reservation:', error);
+    });
 };
 
 export default fetchReservations;
