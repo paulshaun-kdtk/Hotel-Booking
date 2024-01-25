@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BackButton from './BackButton';
 import ForwardButton from './ForwardButton';
+
 const Carousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const nextSlide = () => {
@@ -8,7 +9,7 @@ const Carousel = ({ items }) => {
   };
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + items.length) % items.length
+      (prevIndex) => (prevIndex - 1 + items.length) % items.length,
     );
   };
   return (
@@ -28,10 +29,10 @@ const Carousel = ({ items }) => {
                 <h5>{item.description}</h5>
                 <ul className="carousel-icons">
                   <li>
-                    <i class="fa-brands fa-twitter"></i>
+                    <i className="fa-brands fa-twitter" />
                   </li>
                   <li>
-                    <i className="fa fa-facebook"></i>
+                    <i className="fa fa-facebook" />
                   </li>
                 </ul>
               </div>

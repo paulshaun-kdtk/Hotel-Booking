@@ -1,11 +1,10 @@
 import React from 'react';
-const BackButton = ({ onClick }) => {
-  return (
-    <>
-      <div className="back-button-container" onClick={onClick}>
-        <i class="fa fa-caret-left" aria-hidden="true"></i>
-      </div>
-    </>
-  );
-};
+
+const BackButton = ({ onClick }) => (
+  <>
+    <div className="back-button-container" onClick={onClick}>
+      <i className="fa fa-caret-left" aria-hidden="true" />
+    </div>
+  </>
+);
 export default BackButton;

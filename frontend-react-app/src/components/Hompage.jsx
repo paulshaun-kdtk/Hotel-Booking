@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import Carousel from './Carousel';
+
 const Homepage = () => {
   const [hotelItems, setHotelItems] = useState([]);
   useEffect(() => {
