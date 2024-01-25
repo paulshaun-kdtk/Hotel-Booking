@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 const AdditemForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -20,14 +21,14 @@ const AdditemForm = () => {
         return;
       }
       const dataToSend = {
-          "name": name,
-          "description": description,
-          "image":image,
-          "finance_fee":finance_fee,
-          "purchase_fee":purchase_fee,
-          "total_amount":total_amount,
-          "duration":duration,
-          "apr":apr
+        name,
+        description,
+        image,
+        finance_fee,
+        purchase_fee,
+        total_amount,
+        duration,
+        apr,
       };
       const response = await axios.post(
         'http://127.0.0.1:4000/api/v1/items',
