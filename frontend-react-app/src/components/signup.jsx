@@ -43,7 +43,7 @@ const SignUpForm = () => {
       );
 
       console.log('Response:', response.data);
-      navigate('/Homepage');
+      navigate('/');
 
       // Reset form fields
       setName('');

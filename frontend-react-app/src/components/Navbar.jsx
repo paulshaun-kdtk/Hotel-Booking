@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Logout from './logout';
 
 const Navbar = () => {
 
@@ -34,11 +33,11 @@ const Navbar = () => {
             <li className={isActive('/deletehotel') ? 'active' : ''}><Link to="/deletehotel">Delete Hotel</Link></li>
           </ul>
           <ul className='icons-container'>
-            <li><i class="fa-brands fa-twitter"></i></li>
+            <li><i className="fa-brands fa-twitter"></i></li>
             <li><i className='fa fa-facebook'></i></li>
-            <li><i class="fab fa-google-plus-g"></i></li>
-            <li><i class="fa-brands fa-vimeo-v"></i></li>
-            <li><i class="fa-brands fa-paypal"></i></li>
+            <li><i className="fab fa-google-plus-g"></i></li>
+            <li><i className="fa-brands fa-vimeo-v"></i></li>
+            <li><i className="fa-brands fa-paypal"></i></li>
           </ul>
           <ul className='footer-container'>
             <li>&copy; 2024, All rights reserved</li>

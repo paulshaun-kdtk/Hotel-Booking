@@ -208,6 +208,10 @@
   color: grey;
  }
 
+ .delete-button:hover{
+  background-color: red;
+ }
+
 
 
 
