@@ -5,6 +5,7 @@ import SignUpForm from './components/signup';
 import Homepage from './components/Hompage';
 import Splash from './components/splash';
 import ReservationPage from './components/ReservationPage';
+import ItemDetails from './components/ItemDetails';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/reservation" element={<ReservationPage />} />
+          <Route path="/items/:itemId" element={<ItemDetails />} />
           <Route path="/*" element={<Splash />} />
         </Routes>
       </div>
