@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
-// import { fetchItemDetails } from './redux/actions/itemActions';
+import { useParams, useNavigate } from 'react-router-dom';
 import fetchItemDetails from './redux/actions/itemActions';
 // import { Sidebar } from './Sidebar'; // will be updated after sidebar is created
 
 const ItemDetails = () => {
   const { itemId } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const item = useSelector((state) => state.item);
 
   useEffect(() => {
@@ -16,7 +15,7 @@ const ItemDetails = () => {
   }, [dispatch, itemId]);
 
   const handleReserveClick = () => {
-    history.push('/reservation');
+    navigate.push('/reservation');
   };
 
   return (
