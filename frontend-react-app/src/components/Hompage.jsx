@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// eslint-disable-next-line import/extensions
 import Navbar from './Navbar';
 import Carousel from './Carousel';
 

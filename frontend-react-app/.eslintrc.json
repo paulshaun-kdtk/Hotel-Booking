@@ -6,6 +6,12 @@
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
+    "babelOptions": {
+      "configFile": "./.babelrc"
+    },
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },

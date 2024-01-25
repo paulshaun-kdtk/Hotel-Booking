@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import BackButton from './BackButton';
 import ForwardButton from './ForwardButton';
 
@@ -19,7 +20,7 @@ const Carousel = ({ items }) => {
         <div className="carousel-cards-container">
           {items.map((item, index) => (
             <div
-              key={index}
+              key={item.id} // Use unique identifier instead of index
               className="carousel-card"
               style={{ transform: `translateX(-${currentIndex * 87}%)` }}
             >
@@ -43,5 +44,15 @@ const Carousel = ({ items }) => {
       </div>
     </>
   );
+};
+
+Carousel.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ).isRequired,
 };
 export default Carousel;
