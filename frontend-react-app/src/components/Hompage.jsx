@@ -1,12 +1,30 @@
-import React from 'react';
-import Logout from './logout';
-
-const Homepage = () => (
-  <div className="flex flex-col items-center justify-center">
-    <h1 className="p-5">Welcome to Authentication Template!</h1>
-    <h2 className="p-5">Happy Coding!&#128512;</h2>
-    <Logout />
-  </div>
-);
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Navbar from './Navbar';
+import Carousel from './Carousel';
+const Homepage = () => {
+  const [hotelItems, setHotelItems] = useState([]);
+  useEffect(() => {
+    const fetchHotelItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/v1/items');
+        setHotelItems(response.data.items);
+      } catch (error) {
+        console.error('Error fetching hotel items:', error);
+      }
+    };
+    fetchHotelItems();
+  }, []);
+  console.log(hotelItems);
+  return (
+    <>
+      <Navbar />
+      <div className="homepage-container">
+        <h1>Latest Hotels</h1>
+        <p>Please select a hotel</p>
+        <Carousel items={hotelItems} />
+      </div>
+    </>
+  );
+};
 export default Homepage;
