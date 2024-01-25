@@ -1,7 +1,4 @@
 {
-  "presets": [
-      "@babel/preset-react"
-  ],
-  "requireConfigFile": "false",
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": ["@babel/plugin-syntax-jsx"]
 }
