@@ -1,7 +1,7 @@
 module Api
   module V1
     class ReservationsController < ApplicationController
-      before_action :set_reservation, only: [:show, :destroy]
+      before_action :set_reservation, only: %i[show destroy]
 
       def index
         @reservations = Reservation.all
@@ -36,7 +36,7 @@ module Api
       end
 
       def reservation_params
-        params.require(:reservation).permit(:date, :city, :user_id, item_ids: [])
+        params.require(:reservation).permit(:date, :city, :user_id, :item_id)
       end
     end
   end
