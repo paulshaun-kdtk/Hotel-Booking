@@ -72,6 +72,18 @@
 1. Download or clone this [repostory](https://github.com/paulshaun-kdtk/Hotel-Booking.git).
 2. Provide a modern web browser.
 
+### API Docs:
+
+API docs are created and are accessible by following steps:
+
+Run below command in the terminal
+
+    rails s
+
+Paste this Link below in the Browser
+
+    http://localhost:4000/api-docs/index.html
+
 ### Prerequisites
 
 **In order to run this project you need:**
@@ -186,7 +198,7 @@ If you like this project, kindly drop a start ⭐️ for the [repository](https:
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
- We would like to express our heartfelt gratitude to **Microvere** for the invaluable learning experience they have provided. 
+ We would like to express our heartfelt gratitude to **[Behance Design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)** for the wonderful design which we used according to **[Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/)**. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
