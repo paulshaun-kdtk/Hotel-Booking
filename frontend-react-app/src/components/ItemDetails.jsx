@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import fetchItemDetails from './redux/actions/itemActions';
-// import { Sidebar } from './Sidebar'; // will be updated after sidebar is created
+import Navbar from './Navbar';
 
 const ItemDetails = () => {
   const { itemId } = useParams();
@@ -15,12 +15,12 @@ const ItemDetails = () => {
   }, [dispatch, itemId]);
 
   const handleReserveClick = () => {
-    navigate.push('/reservation');
+    navigate('/reservation');
   };
 
   return (
     <div>
-      {/* <Sidebar /> */}
+      <Navbar />
       <h2>Item Details</h2>
       {item && (
         <div>

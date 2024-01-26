@@ -1,11 +1,10 @@
 module Api
   module V1
     class ReservationsController < ApplicationController
-      before_action :authenticate_user!, only: %i[index show create destroy]
-      before_action :set_reservation, only: %i[show destroy]
+      before_action :set_reservation, only: [:show, :destroy]
 
       def index
-        @reservations = current_user.reservations
+        @reservations = Reservation.all
         render json: @reservations
       end
 
@@ -19,8 +18,10 @@ module Api
         if @reservation.save
           render json: @reservation, status: :created
         else
-          render json: @reservation.errors, status: :unprocessable_entity
+          render json: { error: @reservation.errors.full_messages }, status: :unprocessable_entity
         end
+      rescue StandardError => e
+        render json: { error: e.message }, status: :internal_server_error
       end
 
       def destroy

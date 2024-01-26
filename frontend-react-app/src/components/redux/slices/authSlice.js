@@ -10,6 +10,17 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    signupSuccess: (state, action) => {
+      const { user, token } = action.payload;
+      sessionStorage.setItem('token', token); // Store token in sessionStorage
+      toast.success(`Successful signup. Welcome, ${user.name}`);
+      return {
+        ...state,
+        user: action.payload.user,
+        isAuthenticated: true,
+        token,
+      };
+    },
     loginSuccess: (state, action) => {
       const { user, token } = action.payload;
       sessionStorage.setItem('token', token); // Store token in sessionStorage
@@ -18,6 +29,7 @@ const authSlice = createSlice({
         ...state,
         user,
         isAuthenticated: true,
+        token,
       };
     },
     loginFailure: (state) => {

@@ -1,69 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  setSelectedDate,
-  setSelectedCity,
-} from './redux/slices/reservationSlice';
+import { useDispatch, useSelector, connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import fetchItemDetails from './redux/actions/itemActions';
+import { createReservation, setSelectedDate, setSelectedCity } from './redux/actions/reservationActions';
+import Navbar from './Navbar';
 import '../styles/reservation.css';
 
 const ReservationPage = ({
-  username,
   userId,
-  selectedItem,
-  reservationSelectedDate,
-  selectedCity,
   setSelectedDate,
   setSelectedCity,
 }) => {
-  const [localSelectedDate, setLocalSelectedDate] = useState(new Date());
-  const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [itemData, setItemData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { itemId } = useParams();
+  const item = useSelector((state) => state.item);
+  const [reservationData, setReservationData] = useState({
+    date: '',
+    city: '',
+  });
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.user);
 
   useEffect(() => {
-    const fetchItemData = async () => {
-      try {
-        const response = await axios.get('http://127.0.0.1:4000/api/v1/items'); // Update the URL with your actual server URL
-        console.log('Backend response:', response.data);
-
-        if (response.status !== 200) {
-          throw new Error(
-            `Server returned ${response.status} - ${response.statusText}`,
-          );
-        }
-
-        setItemData(response.data.items);
-
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchItemData();
-  }, []);
-
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
-
-  const handleDateChange = (date) => {
-    setLocalSelectedDate(date);
-    setSelectedDate(date);
-  };
-
-  const handleCityChange = (city) => {
-    setSelectedCity(city);
-  };
+    dispatch(fetchItemDetails(itemId));
+  }, [dispatch, itemId]);
 
   const performSearch = () => {
     const lowerCaseTerm = searchTerm.toLowerCase();
-    const results = itemData.filter((item) => item.name.toLowerCase().includes(lowerCaseTerm));
+    const results = item.filter((item) => item.name.toLowerCase().includes(lowerCaseTerm));
     setSearchResults(results);
   };
 
@@ -71,64 +39,47 @@ const ReservationPage = ({
     performSearch();
   };
 
-  const handleBookNow = async () => {
-    try {
-      const response = await axios.post('/api/v1/reservations', {
-        user_id: userId,
-        item_id: selectedItem.id,
-        city: selectedCity,
-        date: reservationSelectedDate.toISOString().split('T')[0],
-      });
-      const data = await response.json();
-      console.log('Reservation details:', data);
-    } catch (error) {
-      console.error('Error during reservation:', error);
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
     }
+  };
+
+  const handleInputChange = (updatedData) => {
+    setReservationData({
+      ...reservationData,
+      ...updatedData,
+    });
+  };
+
+  const handleReservationSubmit = () => {
+    dispatch(
+      createReservation({
+        ...reservationData,
+        user_id: currentUser.id,
+        item_ids: [item.id],
+      }),
+    );
   };
 
   return (
     <div className="reservation-page">
-      {username}
-
       <div className="page-content">
         <div className="header">
-          {/* Hamburger icon and Search icon */}
-          <div
-            className="hamburger-icon"
-            onClick={toggleSidebar}
-            onKeyDown={(e) => e.key === 'Enter' && toggleSidebar()}
-            role="button"
-            tabIndex={0}
-          >
-            Menu
-          </div>
-          <div
+          <Navbar />
+          <input
+            type="text"
+            placeholder="Search..."
             className="search-icon"
             onClick={handleSearch}
-            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            role="button"
-            tabIndex={0}
-          >
-            Find
-          </div>
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleKeyPress}
+          />
         </div>
-
-        {showSidebar && (
-          <div className="sidebar">
-            {/* Sidebar links */}
-            <a href="Homepage">Homepage</a>
-            <a href="MyReservations">My reservations</a>
-            <a href="AddItem">Add Hotel</a>
-            <a href="DeleteItem">Delete Hotel</a>
-            <button className="close-btn" onClick={toggleSidebar}>
-              Close
-            </button>
-          </div>
-        )}
 
         {searchResults.length > 0 && (
           <div className="search-results">
-            {/* Display search results */}
             <p>Search Results:</p>
             {searchResults.map((result) => (
               <div key={result.id}>
@@ -140,26 +91,21 @@ const ReservationPage = ({
         )}
 
         <div className="main">
-          {Array.isArray(itemData) ? (
-            itemData.map((item) => (
-              <li key={item.id}>
-                <h2 className="item-name">{item.name}</h2>
-                <p className="item-description">{item.description}</p>
-              </li>
-            ))
-          ) : (
-            <p>Loading or No Data</p>
+          {item && (
+            <li key={item.id}>
+              <h2 className="item-name">{item.name}</h2>
+              <p className="item-description">{item.description}</p>
+            </li>
           )}
 
           <div className="clickable">
             <div className="choose-city">
-              {/* City selection dropdown */}
               <select
                 className="select-city"
                 id="city"
                 name="city"
-                value={selectedCity}
-                onChange={(e) => handleCityChange(e.target.value)}
+                value={reservationData.city}
+                onChange={(e) => handleInputChange({ city: e.target.value })}
               >
                 <option value="new-york">New York</option>
                 <option value="los-angeles">Los Angeles</option>
@@ -168,19 +114,17 @@ const ReservationPage = ({
             </div>
 
             <div className="date-picker">
-              {/* Date input */}
               <input
                 className="date-input"
                 type="date"
                 id="date"
                 name="date"
-                value={localSelectedDate.toISOString().split('T')[0]}
-                onChange={(e) => handleDateChange(new Date(e.target.value))}
+                value={reservationData.date}
+                onChange={(e) => handleInputChange({ date: e.target.value })}
               />
             </div>
 
-            {/* Book Now button */}
-            <button className="button" onClick={handleBookNow}>
+            <button className="button" onClick={handleReservationSubmit}>
               Book Now
             </button>
           </div>
@@ -191,27 +135,18 @@ const ReservationPage = ({
 };
 
 ReservationPage.propTypes = {
-  username: PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      itemId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
   userId: PropTypes.string,
-  selectedItem: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    description: PropTypes.string,
-  }),
-  reservationSelectedDate: PropTypes.instanceOf(Date),
-  selectedCity: PropTypes.string,
-  setSelectedDate: PropTypes.func,
-  setSelectedCity: PropTypes.func,
+  setSelectedDate: PropTypes.func.isRequired,
+  setSelectedCity: PropTypes.func.isRequired,
 };
 
 ReservationPage.defaultProps = {
-  username: '',
   userId: '',
-  selectedItem: null,
-  reservationSelectedDate: null,
-  selectedCity: '',
-  setSelectedDate: () => {},
-  setSelectedCity: () => {},
 };
 
 const mapStateToProps = (state) => ({

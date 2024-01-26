@@ -14,6 +14,8 @@ const SignUpForm = () => {
     e.preventDefault();
 
     try {
+      setError('');
+
       if (password.trim() === '') {
         setError("Password can't be blank");
         return;
@@ -43,7 +45,7 @@ const SignUpForm = () => {
       );
 
       console.log('Response:', response.data);
-      navigate('/Homepage');
+      navigate('/');
 
       // Reset form fields
       setName('');

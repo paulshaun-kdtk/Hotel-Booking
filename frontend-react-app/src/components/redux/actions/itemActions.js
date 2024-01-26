@@ -9,9 +9,9 @@ const fetchItemDetailsSuccess = (item) => ({
 
 const fetchItemDetails = (itemId) => (dispatch) => {
   axios
-    .get(`/api/v1/items/${itemId}`)
+    .get(`http://localhost:4000/api/v1/items/${itemId}`)
     .then((response) => {
-      dispatch(fetchItemDetailsSuccess(response.data));
+      dispatch(fetchItemDetailsSuccess(response.data.item));
     })
     .catch((error) => {
       console.error('Error during item details fetching:', error);

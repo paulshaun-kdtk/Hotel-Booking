@@ -4,7 +4,7 @@
 }
 
 .reservation-page {
-  background-color: rgba(97, 167, 0, 0.625);
+  background-color: rgba(180, 238, 63);
   margin: 12px;
   padding: 16px;
   min-height: 100vh;
@@ -39,7 +39,7 @@
   background-color: white;
   padding: 7px 18px;
   border-radius: 14px;
-  color: rgba(109, 187, 0, 0.625);
+  color: rgb(180, 238, 63);
 }
 
 .main {
@@ -64,7 +64,7 @@
 
 .choose-city,
 .date-picker {
-  background-color: rgba(109, 187, 0);
+  background-color: rgb(158, 213, 46);
   border: 1px solid rgb(232, 255, 198);
   color: rgb(232, 255, 198);
   border-radius: 22px;
@@ -74,7 +74,7 @@
 
 .select-city,
 .date-input {
-  background-color: rgba(109, 187, 0);
+  background-color: rgb(158, 213, 46);
   color: rgb(232, 255, 198);
 }
 
@@ -86,16 +86,6 @@
   cursor: pointer;
 }
 
-.sidebar,
-.search-results {
-  position: fixed;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  color: rgba(109, 187, 0);
-}
-
 .search-results {
   margin-left: 82%;
   color: grey;
@@ -104,7 +94,7 @@
 
 .item-name-search,
 .item-description-search {
-  color: rgba(109, 187, 0);
+  color: rgb(180, 238, 63);
   font-size: 15px;
 }
 

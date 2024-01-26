@@ -17,7 +17,6 @@ const SignIn = () => {
         setError('Email and password are required');
         return;
       }
-
       const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
         headers: {
@@ -30,16 +29,24 @@ const SignIn = () => {
           },
         }),
       });
-
-      if (response.ok) {
-        const user = await response.json();
-        dispatch(loginSuccess({ user }));
-        navigate('/Homepage');
-      } else {
-        dispatch(loginFailure());
-        setError('Login failed');
+      const responseJson = await response.json();
+      console.log('API Response:', responseJson);
+      const { status } = responseJson;
+      if (status.code === 200) {
+        const tokenHeader = response.headers.get('Authorization');
+        const token = tokenHeader ? tokenHeader.split(' ')[1] : null;
+        if (token) {
+          const { data } = responseJson;
+          const { id, email } = data;
+          dispatch(loginSuccess({ user: { id, email }, token }));
+          navigate('/homepage');
+        } else {
+          dispatch(loginFailure());
+          setError('Login failed');
+        }
       }
     } catch (error) {
+      console.error('Error parsing JSON:', error);
       dispatch(loginFailure());
       setError('An error occurred');
     }
@@ -67,7 +74,6 @@ const SignIn = () => {
               />
             </label>
           </div>
-
           <div>
             <label
               htmlFor="password"
@@ -85,7 +91,6 @@ const SignIn = () => {
             </label>
             {error && <div className="text-red-500">{error}</div>}
           </div>
-
           <div className="mt-6">
             <button
               type="submit"

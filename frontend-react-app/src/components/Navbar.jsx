@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import '../styles/Navbar.css';
+import Logout from './logout';
 
 const Navbar = () => {
   const location = useLocation();
@@ -24,6 +26,7 @@ const Navbar = () => {
           <li className={isActive('/myreservations') ? 'active' : ''}><Link to="/myreservations">My Reservations</Link></li>
           <li className={isActive('/addhotel') ? 'active' : ''}><Link to="/addhotel">Add Hotel</Link></li>
           <li className={isActive('/deletehotel') ? 'active' : ''}><Link to="/deletehotel">Delete Hotel</Link></li>
+          <li><Logout /></li>
         </ul>
         <ul className="icons-container">
           <li><i className="fa-brands fa-twitter" /></li>
@@ -39,4 +42,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
