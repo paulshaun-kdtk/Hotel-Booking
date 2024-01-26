@@ -10,7 +10,7 @@ import SignUpForm from './components/signup';
 import Homepage from './components/Hompage';
 import ReservationPage from './components/ReservationPage';
 import ItemDetails from './components/ItemDetails';
-import AdditemForm from './components/AdditemForm';
+import AdditemForm from './components/AddItemForm';
 import DeleteHotel from './components/DeleteHotel';
 import Splash from './components/splash';
 
