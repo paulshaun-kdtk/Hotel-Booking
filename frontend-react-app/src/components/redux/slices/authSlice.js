@@ -16,9 +16,8 @@ const authSlice = createSlice({
       toast.success(`Successful signup. Welcome, ${user.name}`);
       return {
         ...state,
-        user: action.payload.user,
+        user,
         isAuthenticated: true,
-        token,
       };
     },
     loginSuccess: (state, action) => {
@@ -29,7 +28,6 @@ const authSlice = createSlice({
         ...state,
         user,
         isAuthenticated: true,
-        token,
       };
     },
     loginFailure: (state) => {
