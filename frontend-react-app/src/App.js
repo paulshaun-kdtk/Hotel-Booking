@@ -4,7 +4,8 @@ import React, {
 import {
   BrowserRouter as Router, Routes, Route, Navigate,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginSuccess } from './components/redux/slices/authSlice';
 import SignInForm from './components/signin';
 import SignUpForm from './components/signup';
 import Homepage from './components/Hompage';
@@ -17,8 +18,17 @@ import Splash from './components/splash';
 
 const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  console.log('appauthentication', isAuthenticated);
   useEffect(() => {
-  }, [isAuthenticated]);
+    const token = sessionStorage.getItem('token');
+    const userString = sessionStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    console.log('appuser', user);
+    if (token && user) {
+      dispatch(loginSuccess({ user, token }));
+    }
+  }, [dispatch]);
   return (
     <Router>
       <div className="App">
