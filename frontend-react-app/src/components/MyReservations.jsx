@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import fetchReservations from './redux/actions/reservationActions';
+import fetchmyReservations from './redux/actions/myReservationActions';
+import Navbar from './Navbar';
 
 const ReservationsList = () => {
   const dispatch = useDispatch();
-  const reservations = useSelector((state) => state.reservations);
+  const myReservations = useSelector((state) => state.myReservation);
 
   useEffect(() => {
-    dispatch(fetchReservations());
+    dispatch(fetchmyReservations());
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+      <Navbar />
       <h2>Reservations List</h2>
-      {reservations ? (
+      {myReservations ? (
         <ul>
-          {reservations.map((reservation) => (
+          {myReservations.map((reservation) => (
             <li key={reservation.id}>
               <p>
                 ID:
@@ -31,7 +33,7 @@ const ReservationsList = () => {
               </p>
               <p>
                 Name:
-                {reservation.item.name}
+                {/* {reservation.item.name} */}
               </p>
             </li>
           ))}

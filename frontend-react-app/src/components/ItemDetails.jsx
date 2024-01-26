@@ -19,7 +19,7 @@ const ItemDetails = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center p-6">
       <Navbar />
       <h2>Item Details</h2>
       {item && (

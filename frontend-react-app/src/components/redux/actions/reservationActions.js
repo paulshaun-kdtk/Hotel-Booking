@@ -1,17 +1,13 @@
 import axios from 'axios';
 
-export const createReservation = (reservationData) => async (dispatch, getState) => {
+export const createReservation = (reservationData) => async (dispatch) => {
   try {
-    const authToken = getState().auth.token;
-    console.log('Authorization Token:', authToken);
-    console.log('Reservation Data:', reservationData);
-
     const response = await axios.post(
       'http://localhost:4000/api/v1/reservations',
       { reservation: reservationData },
       {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
         },
       },
     );

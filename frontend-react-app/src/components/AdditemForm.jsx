@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const AdditemForm = () => {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ const AdditemForm = () => {
   };
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+      <Navbar />
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
         <form className="space-y-3" onSubmit={handleSubmit}>
           <div>

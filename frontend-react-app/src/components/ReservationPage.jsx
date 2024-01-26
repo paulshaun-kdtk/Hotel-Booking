@@ -31,8 +31,14 @@ const ReservationPage = ({
 
   const performSearch = () => {
     const lowerCaseTerm = searchTerm.toLowerCase();
-    const results = item.filter((item) => item.name.toLowerCase().includes(lowerCaseTerm));
-    setSearchResults(results);
+
+    if (Array.isArray(item)) {
+      const results = item.filter((item) => item.name.toLowerCase().includes(lowerCaseTerm));
+      setSearchResults(results);
+    } else {
+      console.error('Items is not an array:', item);
+      setSearchResults([]);
+    }
   };
 
   const handleSearch = () => {
@@ -57,7 +63,7 @@ const ReservationPage = ({
       createReservation({
         ...reservationData,
         user_id: currentUser.id,
-        item_ids: [item.id],
+        item_id: item.id,
       }),
     );
   };

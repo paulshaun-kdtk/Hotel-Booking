@@ -3,6 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line import/extensions
 import Navbar from './Navbar';
 import Carousel from './Carousel';
+import '../styles/Homepage.css';
 
 const Homepage = () => {
   const [hotelItems, setHotelItems] = useState([]);
