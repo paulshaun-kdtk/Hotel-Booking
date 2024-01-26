@@ -1,5 +1,6 @@
 class Api::V1::ItemsController < ApplicationController
   before_action :set_api_item, only: %i[show destroy]
+  before_action :authorize_api_item, only: %i[create destroy]
 
   # GET /api/v1/items
   def index
@@ -9,7 +10,6 @@ class Api::V1::ItemsController < ApplicationController
     else
       render json: { success: false, message: 'No items found' }
     end
-  # handle errors
   rescue StandardError => e
     render json: { success: false, message: e.message }
   end
@@ -52,5 +52,10 @@ class Api::V1::ItemsController < ApplicationController
 
   def api_item_params
     params.require(:item).permit(:name, :description, :image, :finance_fee, :purchase_fee, :total_amount, :duration, :apr)
+  end
+
+  def authorize_api_item
+    authorize! :create, Item
+    authorize! :destroy, @api_item
   end
 end
