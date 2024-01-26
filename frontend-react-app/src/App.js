@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { Router,Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import {
+  BrowserRouter as Router, Routes, Route, Navigate,
+} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import SignInForm from './components/signin';
 import SignUpForm from './components/signup';
 import Homepage from './components/Hompage';
@@ -9,14 +11,25 @@ import MyReservations from './components/MyReservations';
 import ItemDetails from './components/ItemDetails';
 import AdditemForm from './components/AddItemForm';
 import DeleteHotel from './components/DeleteHotel';
+import { loginSuccess } from './components/redux/slices/authSlice';
+
 import Splash from './components/splash';
 
 const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  console.log('appauthentication', isAuthenticated);
 
   useEffect(() => {
-    // Any side effects related to isAuthenticated can be handled here
-  }, [isAuthenticated]);
+    const token = sessionStorage.getItem('token');
+    const userString = sessionStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    console.log('appuser', user);
+
+    if (token && user) {
+      dispatch(loginSuccess({ user, token }));
+    }
+  }, [dispatch]);
 
   return (
     <Router>
@@ -31,7 +44,7 @@ const App = () => {
               <Route path="/items/:itemId" element={<ItemDetails />} />
               <Route path="/addhotel" element={<AdditemForm />} />
               <Route path="/deletehotel" element={<DeleteHotel />} />
-              <Route path="/*" element={<Navigate to="/homepage" />} />
+              {/* <Route path="/*" element={<Navigate to="/homepage" />} /> */}
             </>
           ) : (
             <>
