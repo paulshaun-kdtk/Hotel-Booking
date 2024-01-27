@@ -25,7 +25,7 @@ const Homepage = () => {
       <div className="homepage-container">
         <h1>Latest Hotels</h1>
         <p>Please select a hotel</p>
-        <Carousel items={hotelItems} />
+        <span><Carousel items={hotelItems} /></span>
       </div>
     </div>
   );

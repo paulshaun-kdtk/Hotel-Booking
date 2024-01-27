@@ -2,9 +2,9 @@
   display: flex;
   align-items: end;
   flex-direction: column;
+  gap: 10px;
 
   /* border: 2px solid brown; */
-  height: 80vh;
 
   /* position: relative;
     z-index: -1; */
@@ -14,24 +14,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  top: 1em;
-  left: 4em;
+  margin-top: 6%;
   font-size: 40px;
   font-weight: bolder;
   width: 100%;
+  padding-left: 10%;
 }
 
 .homepage-container p {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   color: grey;
-  top: 2.5em;
-  left: 8.5em;
   font-size: 17px;
   width: 100%;
+  padding-left: 10%;
+}
+
+.homepage-container span {
+  width: 100%;
+  padding-left: 20%;
+  padding-top: 35px;
 }
 
 /* Carousel css */
@@ -75,11 +78,8 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  top: 50px;
 
   /* border: 2px solid yellow; */
-  height: 500px;
-  width: 80%;
 }
 
 .carousel-cards-container {
@@ -121,7 +121,7 @@
   border-radius: 50%;
 }
 
-.carousel-card-inside h4 {
+.item-name-c {
   margin-top: 18px;
   font-size: 20px;
   font-weight: bolder;

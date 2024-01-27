@@ -40,7 +40,7 @@ const Carousel = ({ items }) => {
               <div className="carousel-card-inside">
                 <img src={item.image} alt={item.name} />
                 <h4>
-                  <Link to={`/items/${item.id}`} className="item-name">
+                  <Link to={`/items/${item.id}`} className="item-name-c">
                     {item.name}
                   </Link>
                 </h4>
