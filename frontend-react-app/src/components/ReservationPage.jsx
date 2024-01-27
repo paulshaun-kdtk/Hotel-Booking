@@ -58,14 +58,19 @@ const ReservationPage = ({
     });
   };
 
-  const handleReservationSubmit = () => {
-    dispatch(
-      createReservation({
-        ...reservationData,
-        user_id: currentUser.id,
-        item_id: item.id,
-      }),
-    );
+  const handleReservationSubmit = async () => {
+    try {
+      await dispatch(
+        createReservation({
+          ...reservationData,
+          user_id: currentUser.id,
+          item_id: item.id,
+        }),
+      );
+    } catch (error) {
+      console.error("Error submitting reservation:", error);
+      alert("An error occurred while submitting the reservation. Please try again");
+    }
   };
 
   return (

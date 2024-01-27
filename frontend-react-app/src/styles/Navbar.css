@@ -71,3 +71,23 @@
   padding: 10px;
   color: grey;
 }
+
+@media screen and (max-width: 450px) {
+  .navbar-container {
+    left: 0;
+    transition: none;
+  }
+  .menu-icon {
+    display: none;
+  }
+  .nav-list-container {
+    top: 0;
+  }
+  .icons-container {
+    top: 0;
+  }
+  .footer-container {
+    top: 0;
+  }
+  
+}

@@ -187,8 +187,6 @@ GEM
       racc
     pg (1.5.4)
     pg (1.5.4-x64-mingw-ucrt)
-    psych (5.1.1.1)
-      stringio
     public_suffix (5.0.4)
     puma (6.4.0)
       nio4r (~> 2.0)
@@ -238,8 +236,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
-    rdoc (6.6.0)
-      psych (>= 4.0.0)
+    rdoc (4.3.0)
     regexp_parser (2.9.0)
     reline (0.4.1)
       io-console (~> 0.5)
@@ -264,6 +261,12 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    rswag-api (2.13.0)
+      activesupport (>= 3.1, < 7.2)
+      railties (>= 3.1, < 7.2)
+    rswag-ui (2.13.0)
+      actionpack (>= 3.1, < 7.2)
+      railties (>= 3.1, < 7.2)
     rubocop (1.60.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -287,7 +290,6 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     ssrf_filter (1.1.2)
-    stringio (3.1.0)
     thor (1.3.0)
     timeout (0.4.1)
     tzinfo (2.0.6)
@@ -337,6 +339,8 @@ DEPENDENCIES
   rails (~> 7.1.2)
   rails-controller-testing
   rspec-rails
+  rswag-api
+  rswag-ui
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   tzinfo-data

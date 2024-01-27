@@ -1,5 +1,5 @@
 import React from 'react';
-import Homepage from './Hompage';
+import Homepage from './Homepage';
 
 const DeleteHotel = () => (
   <>
