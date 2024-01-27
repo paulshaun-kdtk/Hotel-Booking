@@ -159,6 +159,10 @@
   }
 
   .forward-button-container {
-    margin-right: -25%;
+    margin-right: -10%;
+  }
+
+  .back-button-container {
+  left: -15%;
   }
 }

@@ -104,3 +104,14 @@
   font-style: italic;
   align-self: flex-start;
 }
+
+
+
+@media screen and (max-width: 450px) { 
+
+    .reservation-page {
+      width: 100%;
+      height: 100%;
+    }
+
+}
