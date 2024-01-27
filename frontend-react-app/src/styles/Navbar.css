@@ -78,6 +78,7 @@
     height: 100%;
     z-index: 2;
   }
+
   .menu-icon {
     z-index: 100;
   }
@@ -87,11 +88,10 @@
   }
 
   .icons-container {
-    top: 2;
     padding-inline-end: 50%;
   }
+
   .footer-container {
-    top: 2;
     padding-inline-end: 50%;
   }
 }
