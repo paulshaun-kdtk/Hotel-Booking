@@ -4,7 +4,6 @@
   <h1><b>The Hotel Booking</b></h1>
 </div>
 
-
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
