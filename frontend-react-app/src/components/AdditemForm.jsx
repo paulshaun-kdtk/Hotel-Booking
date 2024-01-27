@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
-const AdditemForm = () => {
+const AddItemForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -210,4 +210,4 @@ const AdditemForm = () => {
   );
 };
 
-export default AdditemForm;
+export default AddItemForm;

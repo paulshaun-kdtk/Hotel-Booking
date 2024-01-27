@@ -10,7 +10,7 @@ import Homepage from './components/Hompage';
 import ReservationPage from './components/ReservationPage';
 import MyReservations from './components/MyReservations';
 import ItemDetails from './components/ItemDetails';
-import AdditemForm from './components/AddItemForm';
+import AddItemForm from './components/AddItemForm';
 import DeleteHotel from './components/DeleteHotel';
 
 import Splash from './components/splash';
@@ -39,7 +39,7 @@ const App = () => {
               <Route path="/reservation" element={<ReservationPage />} />
               <Route path="/myreservations" element={<MyReservations />} />
               <Route path="/items/:itemId" element={<ItemDetails />} />
-              <Route path="/addhotel" element={<AdditemForm />} />
+              <Route path="/addhotel" element={<AddItemForm />} />
               <Route path="/deletehotel" element={<DeleteHotel />} />
               {/* <Route path="/*" element={<Navigate to="/homepage" />} /> */}
             </>
