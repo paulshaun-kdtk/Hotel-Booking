@@ -29,6 +29,8 @@
     "no-shadow": "off",
     "no-console": "off",
     "no-unused-vars": "off",
+    "no-alert": "off",
+    "import/extensions": ["error", "always", { "ignorePackages": true }],
     "react/button-has-type": "off"
   },
   "overrides": [
