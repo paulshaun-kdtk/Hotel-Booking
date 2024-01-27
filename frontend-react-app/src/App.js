@@ -10,9 +10,8 @@ import Homepage from './components/Hompage';
 import ReservationPage from './components/ReservationPage';
 import MyReservations from './components/MyReservations';
 import ItemDetails from './components/ItemDetails';
-import AdditemForm from './components/AddItemForm';
+import AdditemForm from './components/AdditemForm';
 import DeleteHotel from './components/DeleteHotel';
-import { loginSuccess } from './components/redux/slices/authSlice';
 
 import Splash from './components/splash';
 
