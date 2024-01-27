@@ -8,33 +8,33 @@ describe 'Users API' do
 
       response '200', 'successful' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            users: {
-              type: :array,
-              items: {
-                type: :object,
-                properties: {
-                  id: { type: :integer },
-                  name: { type: :string },
-                  email: { type: :string }
-                },
-                required: %w[id name email]
-              }
-            }
-          },
-          required: %w[success users]
+               properties: {
+                 success: { type: :boolean },
+                 users: {
+                   type: :array,
+                   items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       name: { type: :string },
+                       email: { type: :string }
+                     },
+                     required: %w[id name email]
+                   }
+                 }
+               },
+               required: %w[success users]
 
         run_test!
       end
 
       response '500', 'internal server error' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: %w[success message]
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         run_test!
       end
@@ -56,30 +56,30 @@ describe 'Users API' do
 
       response '201', 'user created' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            user: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                email: { type: :string }
-              },
-              required: %w[id name email]
-            }
-          },
-          required: %w[success user]
+               properties: {
+                 success: { type: :boolean },
+                 user: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     email: { type: :string }
+                   },
+                   required: %w[id name email]
+                 }
+               },
+               required: %w[success user]
 
         run_test!
       end
 
       response '422', 'unprocessable entity' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :array }
-          },
-          required: %w[success message]
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :array }
+               },
+               required: %w[success message]
 
         run_test!
       end
@@ -94,19 +94,19 @@ describe 'Users API' do
 
       response '200', 'user found' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            user: {
-              type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                email: { type: :string }
-              },
-              required: %w[id name email]
-            }
-          },
-          required: %w[success user]
+               properties: {
+                 success: { type: :boolean },
+                 user: {
+                   type: :object,
+                   properties: {
+                     id: { type: :integer },
+                     name: { type: :string },
+                     email: { type: :string }
+                   },
+                   required: %w[id name email]
+                 }
+               },
+               required: %w[success user]
 
         let(:id) { User.create(name: 'John Doe', email: 'john.doe@example.com', password: 'password', password_confirmation: 'password').id }
         run_test!
@@ -114,11 +114,11 @@ describe 'Users API' do
 
       response '404', 'user not found' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: %w[success message]
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         let(:id) { 'invalid' }
         run_test!
@@ -132,11 +132,11 @@ describe 'Users API' do
 
       response '200', 'user deleted' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: %w[success message]
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         let(:id) { User.create(name: 'John Doe', email: 'john.doe@example.com', password: 'password', password_confirmation: 'password').id }
         run_test!
@@ -144,11 +144,11 @@ describe 'Users API' do
 
       response '404', 'user not found' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: %w[success message]
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         let(:id) { 'invalid' }
         run_test!

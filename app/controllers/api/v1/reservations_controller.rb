@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        render json: @reservation
+        render json: { reservation: @reservation, item: @reservation.item }
       end
 
       def create

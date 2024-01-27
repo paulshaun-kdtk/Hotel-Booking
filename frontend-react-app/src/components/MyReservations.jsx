@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import fetchmyReservations from './redux/actions/myReservationActions';
 import fetchItemDetails from './redux/actions/itemActions';
 import Navbar from './Navbar';
@@ -7,33 +8,39 @@ import '../styles/myreservations.css';
 
 const ReservationsList = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.user);
+  console.log('myreservationcurrentUser', currentUser);
   const myReservations = useSelector((state) => state.myReservation);
-  const items = useSelector((state) => state.items);
+  console.log('myReservations', myReservations);
+  const items = useSelector((state) => state.item);
 
-  // Local state to track loaded item details
   const [loadedItemDetails, setLoadedItemDetails] = useState([]);
-
+  useEffect(() => {
+    const fetchHotelItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/v1/items');
+        setLoadedItemDetails(response.data.items);
+      } catch (error) {
+        console.error('Error fetching hotel items:', error);
+      }
+    };
+    fetchHotelItems();
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const reservationsResponse = await dispatch(fetchmyReservations());
+        console.log('reservationsResponse', reservationsResponse);
 
         if (reservationsResponse && reservationsResponse.data) {
           const itemIdsToFetch = reservationsResponse.data
             .filter((reservation) => reservation.item_id && !items[reservation.item_id])
             .map((reservation) => reservation.item_id);
 
-          // Fetch item details for each item_id
           const fetchItemDetailsPromises = itemIdsToFetch.map(async (itemId) => {
             const response = await dispatch(fetchItemDetails(itemId));
-            return response.data.item; // Assuming the structure of your API response
+            return response.data.item;
           });
-
-          // Wait for all item details to be fetched
-          const loadedDetails = await Promise.all(fetchItemDetailsPromises);
-
-          // Update local state with loaded item details
-          setLoadedItemDetails(loadedDetails);
         }
       } catch (error) {
         console.error('Error fetching reservations:', error);
@@ -44,6 +51,7 @@ const ReservationsList = () => {
   }, [dispatch, items]);
 
   const getItemName = (itemId) => {
+    console.log('loadedItems', loadedItemDetails);
     const loadedItem = loadedItemDetails.find((item) => item.id === itemId);
     return loadedItem?.name || 'Hotel Item';
   };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector, connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import fetchItemDetails from './redux/actions/itemActions';
 import { createReservation, setSelectedDate, setSelectedCity } from './redux/actions/reservationActions';
 import Navbar from './Navbar';
@@ -15,6 +15,7 @@ const ReservationPage = ({
   const [searchResults, setSearchResults] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
   const { itemId } = useParams();
   const item = useSelector((state) => state.item);
   const [reservationData, setReservationData] = useState({
@@ -66,6 +67,7 @@ const ReservationPage = ({
         item_id: item.id,
       }),
     );
+    navigate('/myreservations');
   };
 
   return (
@@ -113,6 +115,7 @@ const ReservationPage = ({
                 value={reservationData.city}
                 onChange={(e) => handleInputChange({ city: e.target.value })}
               >
+                <option value="" disabled>Select a City</option>
                 <option value="new-york">New York</option>
                 <option value="los-angeles">Los Angeles</option>
                 <option value="chicago">Chicago</option>

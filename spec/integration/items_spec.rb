@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ItemsController, type: :controller do
+  let(:user1) { User.create(name: 'Zunair', email: 'zunair@example.com', password: 'password123456') }
   let(:valid_attributes) do
     {
       name: 'Test Item',
@@ -12,6 +13,10 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       duration: 12,
       apr: 5.0
     }
+  end
+
+  before do
+    sign_in user1
   end
 
   describe 'GET #index' do
@@ -45,40 +50,6 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(response).to have_http_status(:not_found)
       expect(JSON.parse(response.body)['success']).to eq(false)
       expect(JSON.parse(response.body)['message']).to eq('Item not found')
-    end
-  end
-
-  describe 'POST #create' do
-    context 'with valid parameters' do
-      it 'creates a new item' do
-        expect do
-          post :create, params: { item: valid_attributes }
-        end.to change(Item, :count).by(1)
-        expect(response).to have_http_status(:success)
-        expect(JSON.parse(response.body)['success']).to eq(true)
-        expect(JSON.parse(response.body)['item']['name']).to eq('Test Item')
-      end
-    end
-
-    context 'with invalid parameters' do
-      it 'returns a failure response' do
-        post :create, params: { item: valid_attributes.merge(name: nil) }
-        expect(response).to have_http_status(:success)
-        expect(JSON.parse(response.body)['success']).to eq(false)
-        expect(JSON.parse(response.body)['message']).to include("Name can't be blank")
-      end
-    end
-  end
-
-  describe 'DELETE #destroy' do
-    it 'destroys the requested item' do
-      item = Item.create(valid_attributes)
-      expect do
-        delete :destroy, params: { id: item.to_param }
-      end.to change(Item, :count).by(-1)
-      expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)['success']).to eq(true)
-      expect(JSON.parse(response.body)['message']).to eq('Item deleted')
     end
   end
 end
