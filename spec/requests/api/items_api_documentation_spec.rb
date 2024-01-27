@@ -8,22 +8,22 @@ describe 'Items API' do
 
       response '200', 'successful' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            items: { type: :array, items: { type: :object } }
-          },
-          required: ['success', 'items']
+               properties: {
+                 success: { type: :boolean },
+                 items: { type: :array, items: { type: :object } }
+               },
+               required: %w[success items]
 
         run_test!
       end
 
       response '500', 'internal server error' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: ['success', 'message']
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         run_test!
       end
@@ -49,22 +49,22 @@ describe 'Items API' do
 
       response '201', 'item created' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            item: { type: :object }
-          },
-          required: ['success', 'item']
+               properties: {
+                 success: { type: :boolean },
+                 item: { type: :object }
+               },
+               required: %w[success item]
 
         run_test!
       end
 
       response '422', 'unprocessable entity' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :array }
-          },
-          required: ['success', 'message']
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :array }
+               },
+               required: %w[success message]
 
         run_test!
       end
@@ -79,11 +79,11 @@ describe 'Items API' do
 
       response '200', 'item found' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            item: { type: :object }
-          },
-          required: ['success', 'item']
+               properties: {
+                 success: { type: :boolean },
+                 item: { type: :object }
+               },
+               required: %w[success item]
 
         let(:id) { Item.create(name: 'Example', description: 'Lorem ipsum').id }
         run_test!
@@ -91,11 +91,11 @@ describe 'Items API' do
 
       response '404', 'item not found' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: ['success', 'message']
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         let(:id) { 'invalid' }
         run_test!
@@ -109,11 +109,11 @@ describe 'Items API' do
 
       response '200', 'item deleted' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: ['success', 'message']
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         let(:id) { Item.create(name: 'Example', description: 'Lorem ipsum').id }
         run_test!
@@ -121,11 +121,11 @@ describe 'Items API' do
 
       response '404', 'item not found' do
         schema type: :object,
-          properties: {
-            success: { type: :boolean },
-            message: { type: :string }
-          },
-          required: ['success', 'message']
+               properties: {
+                 success: { type: :boolean },
+                 message: { type: :string }
+               },
+               required: %w[success message]
 
         let(:id) { 'invalid' }
         run_test!
