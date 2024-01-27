@@ -32,22 +32,22 @@ const App = () => {
       <div className="App">
         <Routes>
           {/* {isAuthenticated ? ( */}
-            <>
-              <Route path="/*" element={<Navigate to="/homepage" />} />
-              <Route path="/homepage" element={<Homepage />} />
-              <Route path="/reservation" element={<ReservationPage />} />
-              <Route path="/myreservations" element={<MyReservations />} />
-              <Route path="/items/:itemId" element={<ItemDetails />} />
-              <Route path="/addhotel" element={<AdditemForm />} />
-              <Route path="/deletehotel" element={<DeleteHotel />} />
-              {/* <Route path="/*" element={<Navigate to="/homepage" />} /> */}
-            </>
-          {/* ) : ( */}
-            <>
-              <Route path="/login" element={<SignInForm />} />
-              <Route path="/signup" element={<SignUpForm />} />
-              <Route path="/*" element={<Splash />} />
-            </>
+        <>
+          <Route path="/*" element={<Navigate to="/homepage" />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/reservation" element={<ReservationPage />} />
+          <Route path="/myreservations" element={<MyReservations />} />
+          <Route path="/items/:itemId" element={<ItemDetails />} />
+          <Route path="/addhotel" element={<AdditemForm />} />
+          <Route path="/deletehotel" element={<DeleteHotel />} />
+          {/* <Route path="/*" element={<Navigate to="/homepage" />} /> */}
+        </>
+        {/* ) : ( */}
+        <>
+          <Route path="/login" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/*" element={<Splash />} />
+        </>
           {/* )} */}
         </Routes>
       </div>

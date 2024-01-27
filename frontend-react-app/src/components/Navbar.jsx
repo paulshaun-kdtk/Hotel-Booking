@@ -10,6 +10,7 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setNavbarOpen(!isNavbarOpen);
   };
+  
   return (
     <div >
       <button

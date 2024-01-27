@@ -68,8 +68,8 @@ const ReservationPage = ({
         }),
       );
     } catch (error) {
-      console.error("Error submitting reservation:", error);
-      alert("An error occurred while submitting the reservation. Please try again");
+      console.error('Error submitting reservation:', error);
+      alert('An error occurred while submitting the reservation. Please try again');
     }
   };
 

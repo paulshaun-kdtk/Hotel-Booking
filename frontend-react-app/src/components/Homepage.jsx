@@ -20,7 +20,7 @@ const Homepage = () => {
   }, []);
   console.log(hotelItems);
   return (
-    <div class="container">
+    <div className="container">
       <Navbar />
       <div className="homepage-container">
         <h1>Latest Hotels</h1>
