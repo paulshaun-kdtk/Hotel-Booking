@@ -30,7 +30,7 @@
     "no-console": "off",
     "no-unused-vars": "off",
     "no-alert": "off",
-    "import/extensions": ["error", "always", { "ignorePackages": true }],
+    "import/extensions": "off",
     "react/button-has-type": "off"
   },
   "overrides": [
