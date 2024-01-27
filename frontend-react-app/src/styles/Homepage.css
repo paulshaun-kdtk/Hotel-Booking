@@ -49,6 +49,7 @@
   border-top-left-radius: 100%;
   border-bottom-left-radius: 100%;
   cursor: pointer;
+  margin-right: -14%;
 }
 
 .forward-button-container i:hover {
@@ -67,6 +68,7 @@
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
   cursor: pointer;
+  margin-left: 3%;
 }
 
 .back-button-container i:hover {
