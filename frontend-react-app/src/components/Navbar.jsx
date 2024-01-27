@@ -11,11 +11,10 @@ const Navbar = () => {
     setNavbarOpen(!isNavbarOpen);
   };
   return (
-    <div>
+    <div >
       <button
         className={`menu-icon ${isNavbarOpen ? 'active' : ''}`}
         onClick={toggleNavbar}
-
       >
         ☰
       </button>

@@ -136,3 +136,35 @@
   padding: 10px;
   color: grey;
 }
+
+
+
+@media screen and (max-width: 450px) { 
+
+
+  .homepage-container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  
+.homepage-container h1 {
+  text-align: center;
+  font-weight: bolder;
+  left: 0;
+}
+
+.homepage-container p {
+  text-align: center;
+  color: grey;
+  left: 0;
+}
+
+.forward-button-container {
+  align-self: right;
+  margin-right: -25%;
+}
+}

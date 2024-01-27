@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './styles/Homepage.css';
+@import './styles/reservation.css';
+
 body {
   margin: 0;
   font-family:

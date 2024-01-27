@@ -20,14 +20,14 @@ const Homepage = () => {
   }, []);
   console.log(hotelItems);
   return (
-    <>
+    <div class="container">
       <Navbar />
       <div className="homepage-container">
         <h1>Latest Hotels</h1>
         <p>Please select a hotel</p>
         <Carousel items={hotelItems} />
       </div>
-    </>
+    </div>
   );
 };
 export default Homepage;

@@ -50,7 +50,7 @@
   justify-content: right;
   padding: 20px;
   position: relative;
-  top: 37vh;
+  top: 29vh;
 }
 
 .icons-container li {
@@ -63,7 +63,7 @@
   justify-content: right;
   padding: 20px;
   position: relative;
-  top: 28vh;
+  top: 21vh;
 }
 
 .footer-container li {
@@ -74,20 +74,24 @@
 
 @media screen and (max-width: 450px) {
   .navbar-container {
-    left: 0;
-    transition: none;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
   .menu-icon {
-    display: none;
+    z-index: 100;
   }
+
   .nav-list-container {
-    top: 0;
+    top: 10%;
   }
+
   .icons-container {
-    top: 0;
+    top: 2;
+    padding-inline-end: 50%;
   }
   .footer-container {
-    top: 0;
+    top: 2;
+    padding-inline-end: 50%;
   }
-  
 }

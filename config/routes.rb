@@ -16,11 +16,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
-  authenticated :user do
-    mount Rswag::Ui::Engine => '/api-docs'
-    mount Rswag::Api::Engine => '/api-docs'
-  end
-
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :create, :destroy]

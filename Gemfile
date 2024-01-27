@@ -64,8 +64,6 @@ end
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
-gem 'carrierwave'
-
 gem 'cancancan'
 
-gem 'jwt'
+gem 'rswag'
