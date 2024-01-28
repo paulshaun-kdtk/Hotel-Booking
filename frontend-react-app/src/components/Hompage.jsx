@@ -7,6 +7,11 @@ import '../styles/Homepage.css';
 
 const Homepage = () => {
   const [hotelItems, setHotelItems] = useState([]);
+  const [isMenuOpen, setMenuOpen] = useState(true);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
   useEffect(() => {
     const fetchHotelItems = async () => {
       try {
@@ -20,11 +25,11 @@ const Homepage = () => {
   }, []);
   return (
     <>
-      <Navbar />
+      <Navbar toggleMenu={toggleMenu} />
       <div className="homepage-container">
         <h1>Latest Hotels</h1>
         <p>Please select a hotel</p>
-        <span><Carousel items={hotelItems} /></span>
+        <span className={` ${isMenuOpen ? 'menu-open-padding' : 'menu-close-padding'}`}><Carousel items={hotelItems} /></span>
       </div>
     </>
   );
