@@ -44,10 +44,8 @@ const SignUpForm = () => {
         },
       );
 
-      console.log('Response:', response.data);
       navigate('/');
 
-      // Reset form fields
       setName('');
       setEmail('');
       setPassword('');

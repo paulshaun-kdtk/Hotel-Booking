@@ -9,9 +9,7 @@ import '../styles/myreservations.css';
 const ReservationsList = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.user);
-  console.log('myreservationcurrentUser', currentUser);
   const myReservations = useSelector((state) => state.myReservation);
-  console.log('myReservations', myReservations);
   const items = useSelector((state) => state.item);
 
   const [loadedItemDetails, setLoadedItemDetails] = useState([]);
@@ -30,7 +28,6 @@ const ReservationsList = () => {
     const fetchData = async () => {
       try {
         const reservationsResponse = await dispatch(fetchmyReservations());
-        console.log('reservationsResponse', reservationsResponse);
 
         if (reservationsResponse && reservationsResponse.data) {
           const itemIdsToFetch = reservationsResponse.data
@@ -51,7 +48,6 @@ const ReservationsList = () => {
   }, [dispatch, items]);
 
   const getItemName = (itemId) => {
-    console.log('loadedItems', loadedItemDetails);
     const loadedItem = loadedItemDetails.find((item) => item.id === itemId);
     return loadedItem?.name || 'Hotel Item';
   };

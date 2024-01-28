@@ -25,8 +25,11 @@ module Api
       end
 
       def destroy
-        @reservation.destroy
-        head :no_content
+        if @reservation.destroy
+          render json: { success: true, message: 'Reservation destroyed' }
+        else
+          render json: { success: false, message: @reservation.errors.full_messages }
+        end
       end
 
       private

@@ -8,8 +8,7 @@ class Ability
       can :manage, :all
     else
       can :read, Item
-      cannot :create, Item
-      cannot :destroy, Item
+      # cannot :destroy, Item
     end
   end
 end

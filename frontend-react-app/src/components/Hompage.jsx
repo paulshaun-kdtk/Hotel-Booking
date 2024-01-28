@@ -18,7 +18,6 @@ const Homepage = () => {
     };
     fetchHotelItems();
   }, []);
-  console.log(hotelItems);
   return (
     <>
       <Navbar />

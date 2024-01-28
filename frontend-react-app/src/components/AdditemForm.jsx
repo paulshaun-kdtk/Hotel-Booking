@@ -40,9 +40,7 @@ const AddItemForm = () => {
           },
         },
       );
-      console.log('Response:', response.data);
       navigate('/homepage');
-      // Reset form fields
       setName('');
       setDescription('');
       setImage('');

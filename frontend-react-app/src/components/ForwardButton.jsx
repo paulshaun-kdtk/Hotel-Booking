@@ -5,10 +5,10 @@ const ForwardButton = ({ onClick }) => (
   <div
     className="forward-button-container"
     onClick={onClick}
-    onKeyDown={onClick} // Add this line
-    role="button" // Add this line
-    tabIndex={0} // Add this line
-    aria-label="Forward" // Add this line
+    onKeyDown={onClick}
+    role="button"
+    tabIndex={0}
+    aria-label="Forward"
   >
     <i className="fa fa-caret-right" aria-hidden="true" />
   </div>

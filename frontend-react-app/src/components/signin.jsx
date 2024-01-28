@@ -30,7 +30,6 @@ const SignIn = () => {
         }),
       });
       const responseJson = await response.json();
-      console.log('API Response:', responseJson);
       const { status } = responseJson;
       if (status.code === 200) {
         const tokenHeader = response.headers.get('Authorization');

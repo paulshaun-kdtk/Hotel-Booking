@@ -115,19 +115,44 @@ Paste this Link below in the Browser
 
 ### Usage
 
-- To run the project, execute the following command:
+- To run the **Backend** of project, execute the following command:
 
 ```sh
+    bundle install
+    rails db:create
+    rails db:migrate
     rails s
 ```
-
+- In case you find any error in starting backend that might be due to credentials.yml file so delete that file and then run the commands below:
 ```sh
+    --open your gitbash terminal--
+    EDITOR="code --wait" rails credentials:edit
+    --then close your credentials file--
+    bundle install
+    rails db:create
+    rails db:migrate
+    rails s
+```
+- To run the **FrontEnd** of project, execute the following command:
+```sh
+    --open another gitbash terminal--
+    cd frontend-react-app
+    npm i
     npm start
 ```
 
 ### Deployment
 
 **This project is deployed by the author, no permission for deployment by any other client.**
+
+### Tests
+
+- To run the **tests** of project, execute the following command in root folder:
+```sh
+    --open your gitbash terminal--
+    rspec ./spec/integration
+    rspec ./spec/models
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

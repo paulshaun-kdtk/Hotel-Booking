@@ -22,7 +22,6 @@ const Carousel = ({ items }) => {
   const handleDelete = async (itemId) => {
     try {
       const response = await axios.delete(`http://localhost:4000/api/v1/items/${itemId}`);
-      console.log('Item deleted successfully:', response.data);
       window.alert('Hotel item deleted successfully');
       navigate('/homepage');
     } catch (error) {
@@ -35,28 +34,31 @@ const Carousel = ({ items }) => {
       <div className="carousel-container">
         <BackButton onClick={prevSlide} />
         <div className="carousel-cards-container">
-          {items.map((item) => (
-            <div key={item.id} className="carousel-card" style={{ transform: `translateX(-${currentIndex * 87}%)`, flex: items.length === 1 ? '0 0 100%' : '0 0 50%' }}>
-              <div className="carousel-card-inside">
-                <img src={item.image} alt={item.name} />
-                <h4>
-                  <Link to={`/items/${item.id}`} className="item-name-c">
-                    {item.name}
-                  </Link>
-                </h4>
-                <h5>{item.description}</h5>
-                <ul className="carousel-icons">
-                  <li><i className="fa-brands fa-twitter" /></li>
-                  <li><i className="fa fa-facebook" /></li>
-                </ul>
-                {isDeletePage && (
+          {(items && items.length === 0) || !items ? (
+            <p>No hotels are added yet.</p>
+          ) : (
+            items && items.map((item) => (
+              <div key={item.id} className="carousel-card" style={{ transform: `translateX(-${currentIndex * 87}%)`, flex: items.length === 1 ? '0 0 100%' : '0 0 50%' }}>
+                <div className="carousel-card-inside">
+                  <img src={item.image} alt={item.name} />
+                  <h4>
+                    <Link to={`/items/${item.id}`} className="item-name-c">
+                      {item.name}
+                    </Link>
+                  </h4>
+                  <h5>{item.description}</h5>
+                  <ul className="carousel-icons">
+                    <li><i className="fa-brands fa-twitter" /></li>
+                    <li><i className="fa fa-facebook" /></li>
+                  </ul>
+                  {isDeletePage && (
                   <button className="delete-button bg-red-500 text-white px-3 py-1 rounded" onClick={() => handleDelete(item.id)}>
                     Delete
                   </button>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )))}
         </div>
         <ForwardButton onClick={nextSlide} />
       </div>
@@ -72,7 +74,11 @@ Carousel.propTypes = {
       image: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     }),
-  ).isRequired,
+  ),
+};
+
+Carousel.defaultProps = {
+  items: [],
 };
 
 export default Carousel;

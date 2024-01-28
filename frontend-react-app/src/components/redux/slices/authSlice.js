@@ -33,8 +33,7 @@ const authSlice = createSlice({
       };
     },
     logout: (state) => {
-      sessionStorage.removeItem('token'); // Remove token from sessionStorage on logout
-      // Potentially handle any other necessary actions for logout
+      sessionStorage.removeItem('token');
       sessionStorage.removeItem('user');
       return {
         ...state,
