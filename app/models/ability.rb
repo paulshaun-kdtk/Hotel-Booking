@@ -8,7 +8,6 @@ class Ability
       can :manage, :all
     else
       can :read, Item
-      # cannot :destroy, Item
     end
   end
 end
