@@ -5,9 +5,23 @@
 
 .reservation-page {
   background-color: rgba(180, 238, 63);
+  opacity: 0.9;
   margin: 12px;
   padding: 16px;
-  min-height: 100vh;
+  width: 100%;
+  height: 93vh;
+
+  /* min-height: 100vh; */
+}
+
+.reservation-page::before {
+  content: '';
+  position: absolute;
+  background: url('https://i.pinimg.com/736x/7e/e2/56/7ee2569fb6fe306ecaad1d18c78ea362.jpg');
+  width: 100%;
+  height: 93vh;
+  opacity: 0.2;
+  z-index: -1;
 }
 
 .item-name {
