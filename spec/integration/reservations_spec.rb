@@ -70,11 +70,9 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       expect do
         delete :destroy, params: { id: reservation.id, format: :json }
       end.to change(Reservation, :count).by(-1)
-    end
-
-    it 'returns a no content response' do
-      delete :destroy, params: { id: reservation.id, format: :json }
-      expect(response).to have_http_status(:no_content)
+      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body)['success']).to eq(true)
+      expect(JSON.parse(response.body)['message']).to eq('Reservation destroyed')
     end
   end
 end
