@@ -1,164 +1,204 @@
 <a name="readme-top"></a>
 
 <div align="center">
-<!-- <img src="./app/assets/images/logo_white.png" width="150px"> -->
-  <h1><b>Authentication Template</b></h1>
+  <h1><b>The Hotel Booking</b></h1>
 </div>
-
 
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-    <!-- - [🚀 Live Demo](#live-demo) -->
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [📝 License](#license)
-
----
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 Hotel Booking](#-hotel-booking)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Usage](#usage)
+    - [Deployment](#deployment)
+  - [👥 Author ](#-author-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
+# 📖 Hotel Booking
+
+**The Hotel Booking** is hotel booking application.
+
 ## 🛠 Built With <a name="built-with"></a>
+- ✅ React
+- ✅ React-Redux
+- ✅ Ruby
+- ✅ Ruby on Rails
+- ✅ Postgresql
+- ✅ Linters
 
-### Tech Stack
-
-The project is built using the following technologies:
+### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Client</summary>
+  <summary>Language</summary>
   <ul>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
-  </ul>
-  <ul>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS3</a></li>
-  </ul>
-  <ul>
-    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript">JavaScript</a></li>
-  </ul>
-  <ul>
-    <li><a href="https://react.dev/">React</a></li>
-  </ul>
-  <ul>
-    <li><a href="https://redux-toolkit.js.org/">Redux</a></li>
-  </ul>
-  <ul>
-    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
+    <li>Ruby</li>
+    <li>React</li>
   </ul>
 </details>
-
-<br>
-
----
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-- [x] User Registration: Register an account securely.
-- [x] Responsive Design: Accessible on various devices.
+- 🔰 **Authenticate users**
+- 🔰 **Read all hotels**
+- 🔰 **Read hotel description**
+- 🔰 **Reserve a hotel**
+- 🔰 **Choose a date/city to reserve**
+- 🔰 **Admin can add/remove hotel**
 
-
-<ul>
-  <li>HTML & CSS3</li>
-  <li>JavaScript</li>
-  <li>Linters
-    <ul>
-      <li>StyleLint</li>
-      <li>ESLint</li>
-      <li>Rubocop</li>
-    </ul>
-  </li>
-  <li>React</li>
-  <li>Redux</li>
-  <li>Ruby</li>
-  <li>Ruby on Rails</li>
-  <li>Follow Microverse's list of best practices</li>
-</ul>
-
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-To get a local copy up and running, follow these steps.
+**To get a local copy up and running, follow these steps.**
 
+1. Download or clone this [repostory](https://github.com/paulshaun-kdtk/Hotel-Booking.git).
+2. Provide a modern web browser.
+
+### API Docs:
+
+API docs are created and are accessible by following steps:
+
+Run below command in the terminal
+
+    rails s
+
+Paste this Link below in the Browser
+
+    http://localhost:4000/api-docs/index.html
+
+### Prerequisites
+
+**In order to run this project you need:**
+
+- ✔ Ruby installed in your machine. you can download it from [here](https://www.ruby-lang.org/en/downloads/)
+- ✔ IDE or a code editor installed in your machine.
+- ✔ IRB.
+- ✔ Get Postgresql up and running. you can download it from [here](https://www.postgresql.org/download/windows/).
+- ✔ [Git](https://git-scm.com/downloads) installed in your machine.
+- ✔ Sign in or sign up to your [Github](https://github.com/) account.
+- ✔ A professional editer such as [VS Code](https://code.visualstudio.com/download).
+- ✔ An Updated web browser such as Google Chrome, you can download it from [here](https://www.google.com/chrome/).
 
 ### Setup
 
-Clone this repository to your desired folder by using this 👇️ command :
+- Clone this [repository](https://github.com/paulshaun-kdtk/Hotel-Booking.git) to your desired folder:
 
-```
-git clone https://github.com/MasumaJaffery/Rails-React-Auth-Template
+- Run this command in your command line interface:
+
+```sh
+  cd [YOUR FOLDER]
+  git https://github.com/paulshaun-kdtk/Hotel-Booking.git
+  cd Hotel-Booking
+  bundle install
+  code .
 ```
 
-### Install
+- Update the database.yml with your database credentials under the development section
 
-Install this project with:
-
-```
- npm install     // git bash terminal
- bundle install  // wsl terminal
-```
 
 ### Usage
+
+- To run the **Backend** of project, execute the following command:
+
+```sh
+    bundle install
+    rails db:create
+    rails db:migrate
+    rails s
 ```
- For frontend only:
- cd frontend-react-app
- npm start  // git bash terminal
- For backend only:
- rails s    // wsl terminal
- ```
+- In case you find any error in starting backend that might be due to credentials.yml file so delete that file and then run the commands below:
+```sh
+    --open your gitbash terminal--
+    EDITOR="code --wait" rails credentials:edit
+    --then close your credentials file--
+    bundle install
+    rails db:create
+    rails db:migrate
+    rails s
+```
+- To run the **FrontEnd** of project, execute the following command:
+```sh
+    --open another gitbash terminal--
+    cd frontend-react-app
+    npm i
+    npm start
+```
 
-Runs the app in the development mode.\
-React -> [http://localhost:3000](http://localhost:3000) to view it in your browser.
-RoR -> [http://localhost:4000](http://localhost:4000) to view it in your browser.
+### Deployment
 
+**This project is deployed by the author, no permission for deployment by any other client.**
+
+### Tests
+
+- To run the **tests** of project, execute the following command in root folder:
+```sh
+    --open your gitbash terminal--
+    rspec ./spec/integration
+    rspec ./spec/models
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
 
 <!-- AUTHORS -->
 
-## 👥 Authors <a name="authors"></a>
+## 👥 Author <a name="authors"></a>
 
-👤 **Syeda Masuma Fatima** 
+👤 **Muhammad Zunair khan**
 
-- GitHub: [@MasumaJaffery](https://github.com/MasumaJaffery)
-- Twitter: [@MasumaJaffery](https://twitter.com/MasumaJaffery)
-- LinkedIn: [Masuma Jaffery](https://www.linkedin.com/in/masuma-jaffery-797a29256/)
+- GitHub: [@zunairkhan811](https://github.com/zunairkhan811)
+- Twitter: [@zunairkhan811](https://twitter.com/zunairkhan811)
+- LinkedIn: [@mzunairkhan](https://www.linkedin.com/in/mzunairkhan)
 
+👤 **Assem Zhorabay**
+
+- GitHub: [@zhorabay](https://github.com/zhorabay)
+- LinkedIn: [@zhorabay](https://www.linkedin.com/in/zhorabay)
+- Twitter: [@zhorabay](https://twitter.com/AssemZhorabay)
+- Wellfound: [@zhorabay](https://wellfound.com/u/assem-zhorabay)
+
+👤 **Shaun Kudzai**
+
+- GitHub: [@githubhandle](https://github.com/paulshaun-kdtk)
+
+👤 **Obi Anthony**
+
+- GitHub: [@megagig](https://github.com/megagig)
+- Twitter: [@megagigsolution](https://twitter.com/megagigsolution)
+- LinkedIn: [Anthony Obi](https://www.linkedin.com/in/obi-anthony-440a1430/)
+
+👤 **Mumbere Habert**
+
+- GitHub: [@mumbereh](https://github.com/mumbereh)
+- Twitter: [@mumberehabert1](https://twitter.com/mumberehabert1)
+- LinkedIn: [Mumbere Habert](https://www.linkedin.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-Upcoming improvements:
-- Items API
+- **Add start/end dates**
+- **Add share the reservation button**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
 
 <!-- CONTRIBUTING -->
 
@@ -166,35 +206,25 @@ Upcoming improvements:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/MasumaJaffery/Rails-React-Auth-Template/issues).
+Feel free to check the [issues page](https://github.com/paulshaun-kdtk/Hotel-Booking/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
 
 <!-- SUPPORT -->
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project and know someone who might find it helpful, please share it.
-Or give it a **star** ⭐️
+If you like this project, kindly drop a start ⭐️ for the [repository](https://github.com/paulshaun-kdtk/Hotel-Booking.git);
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
 
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I thank Microverse for this fantastic opportunity, and the code reviewers for their advice and time.
-Special Thanks to https://dakotaleemartinez.com/tutorials/devise-jwt-api-only-mode-for-authentication/ and [@Ruthmy](https://github.com/Ruthmy) , [@CaptainBawa](https://github.com/CaptainBawa) , [@MasumaJaffery](https://github.com/MasumaJaffery)
-
-
+ We would like to express our heartfelt gratitude to **[Behance Design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)** for the wonderful design which we used according to **[Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/)**. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
 
 <!-- LICENSE -->
 
@@ -203,5 +233,3 @@ Special Thanks to https://dakotaleemartinez.com/tutorials/devise-jwt-api-only-mo
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----

@@ -24,7 +24,7 @@ default: &default
 
 development:
   <<: *default
-  database: rails_react_auth_template_development
+  database: hotel_booking_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -58,12 +58,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_react_auth_template_test
+  database: hotel_booking_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
-# ever seen by anyone, they now have access to your database.
-#
 # Instead, provide the password or a full connection URL as an environment
 # variable when you boot the app. For example:
 #
@@ -82,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: rails_react_auth_template_production
-  username: rails_react_auth_template
-  password: <%= ENV["RAILS_REACT_AUTH_TEMPLATE_DATABASE_PASSWORD"] %>
+  database: hotel_booking_production
+  username: hotel_booking
+  password: <%= ENV["HOTEL_BOOKING_DATABASE_PASSWORD"] %>
+  
