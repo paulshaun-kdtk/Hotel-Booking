@@ -31,7 +31,8 @@
     "no-unused-vars": "off",
     "no-alert": "off",
     "import/extensions": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "max-len": "off"
   },
   "overrides": [
     {

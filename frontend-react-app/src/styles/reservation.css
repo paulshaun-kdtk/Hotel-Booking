@@ -6,13 +6,9 @@
 .reservation-page {
   background-color: rgba(180, 238, 63);
   opacity: 0.9;
-
-  /* margin: 12px; */
   padding: 16px;
   width: 100%;
   height: 100vh;
-
-  /* min-height: 100vh; */
 }
 
 .reservation-page::before {
@@ -59,6 +55,10 @@
 
 .main {
   padding-top: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .main li {
@@ -77,6 +77,15 @@
   padding-top: 30px;
 }
 
+.choose-hotel {
+  background-color: rgb(158, 213, 46);
+  border: 1px solid rgb(232, 255, 198);
+  color: rgb(232, 255, 198);
+  border-radius: 22px;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
 .choose-city,
 .date-picker {
   background-color: rgb(158, 213, 46);
@@ -85,6 +94,11 @@
   border-radius: 22px;
   padding: 12px 20px;
   cursor: pointer;
+}
+
+.select-hotel {
+  background-color: rgb(158, 213, 46);
+  color: rgb(232, 255, 198);
 }
 
 .select-city,

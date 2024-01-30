@@ -19,12 +19,11 @@ const ReservationPage = ({
   console.log('hotelitems', hotelItems);
   const currentDate = format(new Date(), 'yyyy-MM-dd');
   const tomorrowDate = format(addDays(new Date(), 1), 'yyyy-MM-dd');
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const { itemId } = useParams();
   const item = useSelector((state) => state.item);
-
+  console.log('item', item);
+  const [hotelId, setHotelId] = useState('');
   const [reservationData, setReservationData] = useState({
     date: '',
     city: '',
@@ -43,30 +42,9 @@ const ReservationPage = ({
   }, [hotels]);
 
   useEffect(() => {
+    console.log('itemId', itemId);
     dispatch(fetchItemDetails(itemId));
   }, [dispatch, itemId]);
-
-  const performSearch = () => {
-    const lowerCaseTerm = searchTerm.toLowerCase();
-
-    if (Array.isArray(item)) {
-      const results = item.filter((item) => item.name.toLowerCase().includes(lowerCaseTerm));
-      setSearchResults(results);
-    } else {
-      console.error('Items is not an array:', item);
-      setSearchResults([]);
-    }
-  };
-
-  const handleSearch = () => {
-    performSearch();
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch();
-    }
-  };
 
   const handleInputChange = (updatedData) => {
     setReservationData({
@@ -80,7 +58,7 @@ const ReservationPage = ({
       createReservation({
         ...reservationData,
         user_id: currentUser.id,
-        item_id: item.id,
+        item_id: item.id || hotelId,
       }),
     );
     navigate('/myreservations');
@@ -96,50 +74,37 @@ const ReservationPage = ({
               type="text"
               placeholder="Search..."
               className="search-icon"
-              onClick={handleSearch}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
             />
           </div>
-
         </div>
 
-        {searchResults.length > 0 && (
-          <div className="search-results">
-            <p>Search Results:</p>
-            {searchResults.map((result) => (
-              <div key={result.id}>
-                <h2 className="item-name">{result.name}</h2>
-                <p className="item-description">{result.description}</p>
-              </div>
-            ))}
-          </div>
-        )}
-
         <div className="main">
-          {item && (
-          <li key={item.id}>
-            <h2 className="item-name">{item.name}</h2>
-            <p className="item-description">{item.description}</p>
-          </li>
-          // ) : (
-          //   <div className="choose-city">
-          //     <select
-          //       className="select-city"
-          //       id={item.id}
-          //       name={item.name}
-          //       value= {item.id}
-          //       onChange={(e) => handleInputChange({ item_id: e.target.value })}
-          //     >
-          //       <option value="" disabled>Select Hotel</option>
-          //       {hotelItems && hotelItems.map((hotel) => (
-          //         <option value={hotel.name} key={hotel.id}>
-          //           {hotel.name}
-          //         </option>
-          //       ))}
-          //     </select>
-          //   </div>
+          {item.id ? (
+            <li key={item.id}>
+              <h2 className="item-name">{item.name}</h2>
+              <p className="item-description">{item.description}</p>
+            </li>
+          ) : (
+            <div className="choose-hotel">
+              <select
+                className="select-hotel"
+                id={item?.id || ''}
+                name={item?.name || ''}
+                value={reservationData.hotel ? reservationData.hotel.id.toString() : ''}
+                onChange={(e) => {
+                  const selectedHotel = hotelItems.find((hotel) => hotel.id.toString() === e.target.value);
+                  setHotelId(selectedHotel.id);
+                  handleInputChange({ hotel: selectedHotel });
+                }}
+              >
+                <option value="" disabled>Select Hotel</option>
+                {hotelItems && hotelItems.map((hotel) => (
+                  <option value={hotel.id.toString()} key={hotel.id}>
+                    {hotel.name}
+                  </option>
+                ))}
+              </select>
+            </div>
           )}
 
           <div className="clickable">
