@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import fetchmyHotels from './redux/actions/fetchHotelsActions';
 import BackButton from './BackButton';
 import ForwardButton from './ForwardButton';
 
-const Carousel = ({ items }) => {
+const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const items = useSelector((state) => state.myHotels.items);
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const isDeletePage = location.pathname === '/deletehotel';
+
+  useEffect(() => {
+    dispatch(fetchmyHotels());
+  }, [dispatch]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -22,8 +29,7 @@ const Carousel = ({ items }) => {
   const handleDelete = async (itemId) => {
     try {
       const response = await axios.delete(`http://localhost:4000/api/v1/items/${itemId}`);
-      window.alert('Hotel item deleted successfully');
-      navigate('/homepage');
+      dispatch(fetchmyHotels());
     } catch (error) {
       console.error('Error deleting hotel item:', error);
     }
@@ -64,21 +70,6 @@ const Carousel = ({ items }) => {
       </div>
     </>
   );
-};
-
-Carousel.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
-  ),
-};
-
-Carousel.defaultProps = {
-  items: [],
 };
 
 export default Carousel;

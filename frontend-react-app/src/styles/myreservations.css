@@ -19,12 +19,10 @@
   font-weight: 700;
 }
 
-.my-main table {
-  width: 100%;
-  font-size: 18px;
-}
-
-.table-head {
-  padding-bottom: 10px;
-  font-size: 20px;
+.unreserve-btn {
+  color: whitesmoke;
+  background-color: red;
+  border: 1px solid #ff5f2f;
+  border-radius: 4px;
+  cursor: pointer;
 }

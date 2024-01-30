@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { addDays, format } from 'date-fns';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import fetchItemDetails from './redux/actions/itemActions';
+import fetchmyHotels from './redux/actions/fetchHotelsActions';
 import { createReservation, setSelectedDate, setSelectedCity } from './redux/actions/reservationActions';
 import Navbar from './Navbar';
 import '../styles/reservation.css';
@@ -12,12 +14,17 @@ const ReservationPage = ({
   setSelectedDate,
   setSelectedCity,
 }) => {
+  const hotels = useSelector((state) => state.myHotels.items);
+  const [hotelItems, setHotelItems] = useState([]);
+  console.log('hotelitems', hotelItems);
+  const currentDate = format(new Date(), 'yyyy-MM-dd');
+  const tomorrowDate = format(addDays(new Date(), 1), 'yyyy-MM-dd');
   const [searchResults, setSearchResults] = useState([]);
-  const [showSidebar, setShowSidebar] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const { itemId } = useParams();
   const item = useSelector((state) => state.item);
+
   const [reservationData, setReservationData] = useState({
     date: '',
     city: '',
@@ -25,6 +32,15 @@ const ReservationPage = ({
 
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    dispatch(fetchmyHotels());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('hotels from Redux:', hotels);
+    setHotelItems(hotels);
+  }, [hotels]);
 
   useEffect(() => {
     dispatch(fetchItemDetails(itemId));
@@ -75,15 +91,18 @@ const ReservationPage = ({
       <div className="page-content">
         <div className="header">
           <Navbar />
-          <input
-            type="text"
-            placeholder="Search..."
-            className="search-icon"
-            onClick={handleSearch}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleKeyPress}
-          />
+          <div className="searchbar-input-container">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search-icon"
+              onClick={handleSearch}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+          </div>
+
         </div>
 
         {searchResults.length > 0 && (
@@ -100,10 +119,27 @@ const ReservationPage = ({
 
         <div className="main">
           {item && (
-            <li key={item.id}>
-              <h2 className="item-name">{item.name}</h2>
-              <p className="item-description">{item.description}</p>
-            </li>
+          <li key={item.id}>
+            <h2 className="item-name">{item.name}</h2>
+            <p className="item-description">{item.description}</p>
+          </li>
+          // ) : (
+          //   <div className="choose-city">
+          //     <select
+          //       className="select-city"
+          //       id={item.id}
+          //       name={item.name}
+          //       value= {item.id}
+          //       onChange={(e) => handleInputChange({ item_id: e.target.value })}
+          //     >
+          //       <option value="" disabled>Select Hotel</option>
+          //       {hotelItems && hotelItems.map((hotel) => (
+          //         <option value={hotel.name} key={hotel.id}>
+          //           {hotel.name}
+          //         </option>
+          //       ))}
+          //     </select>
+          //   </div>
           )}
 
           <div className="clickable">
@@ -130,6 +166,7 @@ const ReservationPage = ({
                 name="date"
                 value={reservationData.date}
                 onChange={(e) => handleInputChange({ date: e.target.value })}
+                min={tomorrowDate}
               />
             </div>
 

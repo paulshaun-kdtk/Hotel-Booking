@@ -1,54 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import fetchmyReservations from './redux/actions/myReservationActions';
-import fetchItemDetails from './redux/actions/itemActions';
+import fetchmyHotels from './redux/actions/fetchHotelsActions';
 import Navbar from './Navbar';
 import '../styles/myreservations.css';
 
 const ReservationsList = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.auth.user);
   const myReservations = useSelector((state) => state.myReservation);
-  const items = useSelector((state) => state.item);
+  console.log('myReservations', myReservations);
+  const myHotels = useSelector((state) => state.myHotels.items);
 
-  const [loadedItemDetails, setLoadedItemDetails] = useState([]);
   useEffect(() => {
-    const fetchHotelItems = async () => {
-      try {
-        const response = await axios.get('http://localhost:4000/api/v1/items');
-        setLoadedItemDetails(response.data.items);
-      } catch (error) {
-        console.error('Error fetching hotel items:', error);
-      }
-    };
-    fetchHotelItems();
-  }, []);
+    dispatch(fetchmyHotels());
+  }, [dispatch]);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const reservationsResponse = await dispatch(fetchmyReservations());
+    dispatch(fetchmyReservations());
+  }, [dispatch]);
 
-        if (reservationsResponse && reservationsResponse.data) {
-          const itemIdsToFetch = reservationsResponse.data
-            .filter((reservation) => reservation.item_id && !items[reservation.item_id])
-            .map((reservation) => reservation.item_id);
-
-          const fetchItemDetailsPromises = itemIdsToFetch.map(async (itemId) => {
-            const response = await dispatch(fetchItemDetails(itemId));
-            return response.data.item;
-          });
-        }
-      } catch (error) {
-        console.error('Error fetching reservations:', error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch, items]);
+  const handleDelete = async (reservationId) => {
+    try {
+      const response = await axios.delete(`http://localhost:4000/api/v1/reservations/${reservationId}`);
+      dispatch(fetchmyReservations());
+    } catch (error) {
+      console.error('Error deleting hotel item:', error);
+    }
+  };
 
   const getItemName = (itemId) => {
-    const loadedItem = loadedItemDetails.find((item) => item.id === itemId);
+    const loadedItem = myHotels && myHotels.find((item) => item.id === itemId);
     return loadedItem?.name || 'Hotel Item';
   };
 
@@ -57,24 +39,33 @@ const ReservationsList = () => {
       <Navbar />
       <div className="my-main">
         <h2>Reservations List</h2>
-        <table>
-          <thead>
-            <tr>
-              <th className="table-head">Name</th>
-              <th className="table-head">Date</th>
-              <th className="table-head">City</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myReservations.map((reservation) => (
-              <tr key={reservation.id}>
-                <td>{getItemName(reservation.item_id)}</td>
-                <td>{reservation.date}</td>
-                <td>{reservation.city}</td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border border-gray-300">
+            <thead>
+              <tr>
+                <th className="py-2 px-2 md:px-4 lg:px-6 border-b bg-gray-200">Name</th>
+                <th className="py-2 px-2 md:px-4 lg:px-6 border-b bg-gray-200">Date</th>
+                <th className="py-2 px-2 md:px-4 lg:px-6 border-b bg-gray-200">City</th>
+                <th className="py-2 px-2 md:px-4 lg:px-6 border-b bg-gray-200">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {myReservations.map((reservation) => (
+                <tr key={reservation.id} className="hover:bg-gray-100 transition-colors">
+                  <td className="py-2 px-2 md:px-4 lg:px-6 border-b">{getItemName(reservation.item_id)}</td>
+                  <td className="py-2 px-2 md:px-4 lg:px-6 border-b">{reservation.date}</td>
+                  <td className="py-2 px-2 md:px-4 lg:px-6 border-b">{reservation.city}</td>
+                  <td className="py-2 px-2 md:px-4 lg:px-6 border-b">
+                    <button className="unreserve-btn hover:bg-red-500 text-white px-2 py-1 rounded sm:px-3 sm:py-1 md:px-4 md:py-1 lg:px-6 lg:py-1" onClick={() => handleDelete(reservation.id)}>
+                      UnReserve
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
   );

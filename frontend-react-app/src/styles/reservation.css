@@ -118,3 +118,9 @@
   font-style: italic;
   align-self: flex-start;
 }
+
+.searchbar-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
