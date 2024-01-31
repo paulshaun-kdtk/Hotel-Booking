@@ -54,7 +54,6 @@ const ReservationPage = ({
   };
 
   const handleReservationSubmit = () => {
-    useEffect(() => {
       dispatch(
         createReservation({
           ...reservationData,
@@ -62,7 +61,6 @@ const ReservationPage = ({
           item_id: item.id || hotelId,
         }),
       );
-    }, [dispatch]);
     navigate('/myreservations');
   };
 
