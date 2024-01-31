@@ -39,8 +39,6 @@
 - ✅ Postgresql
 - ✅ Linters
 
-# Live Link: [Click Here](https://hotel-booking-frontend-7f76.onrender.com/)
-
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
@@ -63,6 +61,15 @@
 - 🔰 **Admin can add/remove hotel**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Links -->
+
+## Kanban board link <a name="kanban- board">
+- [Kanban board link](https://github.com/users/paulshaun-kdtk/projects/3)
+- [Kanban board issue link](https://github.com/paulshaun-kdtk/Hotel-Booking/issues/14)
+
+## Live Demo Link <a name="live-demo">
+- [Live Demo link](https://hotel-booking-frontend-7f76.onrender.com/)
 
 <!-- GETTING STARTED -->
 
