@@ -1,6 +1,6 @@
 databases:
   - name: hotel_booking_app
-    databaseName: hotel_booking_app
+    databaseName: hotel_booking_app_q0kv
     user: hotel_booking_app
     plan: free
 services:
