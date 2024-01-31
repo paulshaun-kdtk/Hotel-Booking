@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
@@ -14,6 +15,7 @@ const AddItemForm = () => {
   const [duration, setDuration] = useState('');
   const [apr, setApr] = useState('');
   const [error, setError] = useState('');
+  const currentUser = useSelector((state) => state.auth.user);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,15 +33,20 @@ const AddItemForm = () => {
         duration,
         apr,
       };
-      const response = await axios.post(
-        'http://127.0.0.1:4000/api/v1/items',
-        dataToSend,
-        {
-          headers: {
-            'Content-Type': 'application/json',
+      if (currentUser.email === 'admin@gmail.com') {
+        const response = await axios.post(
+          'http://127.0.0.1:4000/api/v1/items',
+          dataToSend,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        },
-      );
+        );
+      } else {
+        window.alert('You are not an authorized user to add Hotels.');
+      }
+
       navigate('/homepage');
       setName('');
       setDescription('');

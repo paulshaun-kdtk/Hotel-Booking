@@ -9,6 +9,8 @@ import ForwardButton from './ForwardButton';
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = useSelector((state) => state.myHotels.items);
+  const currentUser = useSelector((state) => state.auth.user);
+  console.log('currentuser', currentUser);
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,8 +30,12 @@ const Carousel = () => {
 
   const handleDelete = async (itemId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/v1/items/${itemId}`);
-      dispatch(fetchmyHotels());
+      if (currentUser.email === 'admin@gmail.com') {
+        const response = await axios.delete(`http://localhost:4000/api/v1/items/${itemId}`);
+        dispatch(fetchmyHotels());
+      } else {
+        window.alert('You are not an authorized user to delete Hotels.');
+      }
     } catch (error) {
       console.error('Error deleting hotel item:', error);
     }
