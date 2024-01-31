@@ -8,7 +8,7 @@ const fetchHotelsSuccess = (myHotels) => ({
 });
 
 const fetchmyHotels = () => (dispatch) => {
-  axios.get('http://localhost:4000/api/v1/items')
+  axios.get(' https://hotel-booking-app-r0mb.onrender.com/api/v1/items')
     .then((response) => {
       dispatch(fetchHotelsSuccess(response.data));
     })

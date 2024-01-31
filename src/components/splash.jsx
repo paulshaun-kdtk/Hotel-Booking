@@ -7,13 +7,13 @@ const Splash = () => (
     </h3>
     <div className="flex items-center gap-6">
       <a
-        href="http://127.0.0.1:3000/signup"
+        href=" https://hotel-booking-app-r0mb.onrender.com/signup"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300"
       >
         Sign Up
       </a>
       <a
-        href="http://127.0.0.1:3000/login"
+        href=" https://hotel-booking-app-r0mb.onrender.com/login"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300"
       >
         Sign In

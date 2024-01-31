@@ -3,7 +3,7 @@ import axios from 'axios';
 export const createReservation = (reservationData) => async (dispatch) => {
   try {
     const response = await axios.post(
-      'http://localhost:4000/api/v1/reservations',
+      ' https://hotel-booking-app-r0mb.onrender.com/api/v1/reservations',
       { reservation: reservationData },
       {
         headers: {

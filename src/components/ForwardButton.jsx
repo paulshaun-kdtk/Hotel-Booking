@@ -15,7 +15,7 @@ const ForwardButton = ({ onClick }) => (
 );
 
 ForwardButton.propTypes = {
-  onClick: PropTypes.func.isRequired, // Add this line
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ForwardButton;

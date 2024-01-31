@@ -9,7 +9,7 @@ const fetchItemDetailsSuccess = (item) => ({
 
 const fetchItemDetails = (itemId) => (dispatch) => {
   axios
-    .get(`http://localhost:4000/api/v1/items/${itemId}`)
+    .get(` https://hotel-booking-app-r0mb.onrender.com/api/v1/items/${itemId}`)
     .then((response) => {
       dispatch(fetchItemDetailsSuccess(response.data.item));
     })

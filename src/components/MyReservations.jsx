@@ -22,7 +22,7 @@ const ReservationsList = () => {
 
   const handleDelete = async (reservationId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/v1/reservations/${reservationId}`);
+      const response = await axios.delete(` https://hotel-booking-app-r0mb.onrender.com/api/v1/reservations/${reservationId}`);
       dispatch(fetchmyReservations());
     } catch (error) {
       console.error('Error deleting hotel item:', error);

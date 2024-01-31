@@ -35,7 +35,7 @@ const AddItemForm = () => {
       };
       if (currentUser.email === 'admin@gmail.com') {
         const response = await axios.post(
-          'http://127.0.0.1:4000/api/v1/items',
+          ' https://hotel-booking-app-r0mb.onrender.com/api/v1/items',
           dataToSend,
           {
             headers: {

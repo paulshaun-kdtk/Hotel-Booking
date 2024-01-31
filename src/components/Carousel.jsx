@@ -31,7 +31,7 @@ const Carousel = () => {
   const handleDelete = async (itemId) => {
     try {
       if (currentUser.email === 'admin@gmail.com') {
-        const response = await axios.delete(`http://localhost:4000/api/v1/items/${itemId}`);
+        const response = await axios.delete(` https://hotel-booking-app-r0mb.onrender.com/api/v1/items/${itemId}`);
         dispatch(fetchmyHotels());
       } else {
         window.alert('You are not an authorized user to delete Hotels.');
