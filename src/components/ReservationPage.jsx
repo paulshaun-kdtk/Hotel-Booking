@@ -54,13 +54,15 @@ const ReservationPage = ({
   };
 
   const handleReservationSubmit = () => {
-    dispatch(
-      createReservation({
-        ...reservationData,
-        user_id: currentUser.id,
-        item_id: item.id || hotelId,
-      }),
-    );
+    useEffect(() => {
+      dispatch(
+        createReservation({
+          ...reservationData,
+          user_id: currentUser.id,
+          item_id: item.id || hotelId,
+        }),
+      );
+    }, [dispatch]);
     navigate('/myreservations');
   };
 
