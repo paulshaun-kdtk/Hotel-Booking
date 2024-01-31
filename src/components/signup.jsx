@@ -35,7 +35,7 @@ const SignUpForm = () => {
       };
 
       const response = await axios.post(
-        ' https://hotel-booking-app-r0mb.onrender.com/api/v1/users',
+        'https://hotel-booking-app-r0mb.onrender.com/api/v1/users',
         dataToSend,
         {
           headers: {
