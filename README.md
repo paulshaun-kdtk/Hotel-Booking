@@ -73,6 +73,9 @@
 ## Live Demo Link <a name="live-demo"></a>
 - [Live Demo link](https://hotel-booking-frontend-7f76.onrender.com/)
 
+### Note: In order to have admin rights in Live Link to add or delete hotels
+- You can signIN with email:admin@gmail.com, password: 12345678
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
